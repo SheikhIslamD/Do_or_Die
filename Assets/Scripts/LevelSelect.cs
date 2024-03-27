@@ -18,11 +18,11 @@ public class LevelSelect : MonoBehaviour
         //the last number is whatever number scene level select is in build settings
         int levelAt = PlayerPrefs.GetInt("levelAt", 2);
         //buttons after 1 are made uninteractable
-        for (int i = 0; i < levelButtons.Length; i++)
-        {
-            if (i + 2 > levelAt)
-                levelButtons[i].interactable = false;
-        }
+        //for (int i = 0; i < levelButtons.Length; i++)
+        //{
+            //if (i + 2 > levelAt)
+                //levelButtons[i].interactable = false;
+        //}
     }
 
     // Update is called once per frame
@@ -51,17 +51,17 @@ public class LevelSelect : MonoBehaviour
 
     public void Level1()
     {
-        SceneManager.LoadScene("PlatformerLevel");
+        SceneManager.LoadScene("ArtPrototype");
     }
 
     public void Level2()
     {
-        SceneManager.LoadScene("PuzzleLevel");
+        SceneManager.LoadScene("MazePrototype");
     }
 
     public void BossLevel()
     {
-        SceneManager.LoadScene("BossLevel");
+        SceneManager.LoadScene("BossPrototype");
     }
 
     public void Exit()
