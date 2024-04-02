@@ -123,7 +123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5848258578300271210}
   m_LocalRotation: {x: -0, y: 2.7755569e-17, z: -0.0000000032596288, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.0027325, z: -9.30343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -277,8 +277,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5848258578517573837}
   - component: {fileID: 5848258578517573824}
+  - component: {fileID: 996626479498062711}
   - component: {fileID: 5848258578517573839}
   - component: {fileID: 5848258578517573838}
+  - component: {fileID: 327782331198421340}
   m_Layer: 0
   m_Name: Dice
   m_TagString: Player
@@ -309,6 +311,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5848258578517573836}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &996626479498062711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5848258578517573836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc87cae93306ed24592f578641ce8300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dice: {fileID: 5848258578517573836}
+  throwForce: 20
+  upwardForce: 10
+  cooldown: 0
+  diceHeld: 0
+  diceLanded: 0
+  camera: {fileID: 5848258579853841847}
+  headPoint: {fileID: 5848258578211889955}
+  player: {fileID: 5848258579939156064}
+  allowInvoke: 1
+  magicPoofHead: {fileID: 4875560288751963245, guid: 1fadf2b4e43a36241a95d47456bd58f8, type: 3}
+  magicPoofDice: {fileID: 4875560288751963245, guid: 1fadf2b4e43a36241a95d47456bd58f8, type: 3}
+  rigidb: {fileID: 327782331198421340}
+  collider: {fileID: 5848258578517573838}
+  material:
+  - {fileID: 2100000, guid: a38e1031a2e81ca4f93c7ac35d09d514, type: 2}
+  - {fileID: 2100000, guid: 3b340aa97d4e0f94bb0dd0706565469e, type: 2}
+  - {fileID: 2100000, guid: b24eb4139bff3de43afe6ecce12188fc, type: 2}
+  - {fileID: 2100000, guid: 40b78bbdf4609d444a6d202aaa2ed23f, type: 2}
+  - {fileID: 2100000, guid: 0735757f217083247abae1a31a73f194, type: 2}
+  - {fileID: 2100000, guid: 796ba0dad8361644d8352f7591a09d3e, type: 2}
+  - {fileID: 2100000, guid: c627a19574683924f982f9dfc5b8133f, type: 2}
+  rollNumber: 0
 --- !u!23 &5848258578517573839
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -328,8 +365,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -364,6 +400,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &327782331198421340
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5848258578517573836}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5848258579430809929
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +645,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5848258579692127756}
-  m_LocalRotation: {x: -0.046479553, y: 0.000000016594669, z: -6.967684e-10, w: 0.9989193}
+  m_LocalRotation: {x: -0.046479553, y: -0.000000016897676, z: 0.0000000072089796, w: 0.9989193}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -819,7 +871,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5848258579853841845}
   m_LocalRotation: {x: 0.13870123, y: -0, z: -0, w: 0.99033433}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -3.5200005, z: 8.669998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1045,6 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f1fdb4dd6603249a3c31112edf22f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
   controller: {fileID: 5848258579939156078}
   cam: {fileID: 5848258579853841846}
   speed: 7

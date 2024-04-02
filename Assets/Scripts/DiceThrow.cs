@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DiceThrow : MonoBehaviour
 {
+    private PlayerMovement playerController;
     public GameObject dice;
     public float throwForce, upwardForce;
     public float cooldown;
@@ -27,6 +28,26 @@ public class DiceThrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+                    //THERE'S HELLA DEBUG LOG AND COMMENTS IN THIS FUNCTION, FEEL FREE TO REMOVE THEM
+        
+        //Referencing player controller script
+        GameObject diceHead = GameObject.Find("Dicehead");
+        // Check if we find Dicehead
+        if (diceHead != null)
+        {
+            Debug.Log("We found Dicehead");
+            // Access the player controller script component
+            playerController = diceHead.GetComponent<PlayerMovement>();
+            Debug.Log("Script accessed");
+
+            // Check if the script component is found
+            if (playerController != null)
+            {
+                Debug.Log("And we found the script!");
+            }
+        }
+        
+
         //dice position attached to player
         diceHeld = true;
         rigidb.isKinematic = true;
@@ -120,9 +141,16 @@ public class DiceThrow : MonoBehaviour
     public void diceRoll()
     {
         rollNumber = Random.Range(1, 6);
+        Debug.Log(rollNumber);
+        if (rollNumber == 1)
+        {
+            playerController.DamageHealth();
+            Debug.Log("You rolled a 1 and lost health");
+        }
         rend.sharedMaterial = material[rollNumber];
         magicPoofDice.Play();
         diceLanded = true;
+
     }
 
     public void diceReset()
