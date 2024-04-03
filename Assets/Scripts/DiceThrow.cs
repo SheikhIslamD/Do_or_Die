@@ -69,6 +69,8 @@ public class DiceThrow : MonoBehaviour
 
         //dice rolling stuff
         if (!diceHeld && !diceLanded) diceRoll();
+
+        //for the more advanced dice roll to be added with raycasts and stuff, could isGrounded be useful?
     }
 
     public void Throw()
