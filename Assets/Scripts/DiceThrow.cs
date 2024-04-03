@@ -65,7 +65,7 @@ public class DiceThrow : MonoBehaviour
     {
         //if dice is held, lmb throws it
         if (diceHeld && Input.GetKeyDown(KeyCode.Mouse0)) Throw();
-        if (!diceHeld && Input.GetKeyDown(KeyCode.Mouse1)) Recall();
+        if (!diceHeld && Input.GetKeyDown(KeyCode.Mouse0)) Recall();
 
         //dice rolling stuff
         if (!diceHeld && !diceLanded) diceRoll();
@@ -159,5 +159,11 @@ public class DiceThrow : MonoBehaviour
     {
         rollNumber = 0;
         rend.sharedMaterial = material[rollNumber];
+    }
+
+    //use oncollision here to snap the dice to reciever spots?
+    private void OnCollisionEnter(Collision other)
+    {
+        
     }
 }

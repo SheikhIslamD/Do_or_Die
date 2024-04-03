@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -15,6 +16,19 @@ public class PlayerMovement : MonoBehaviour
 	public float jump = 2f;
 	public float gravity = -9.81f;
 	float velocity;
+
+	//for turning player to face cam
+	public float rotationSpeed = 0f;
+	public bool isAiming;
+    //setting up input system for future (we may need to rebind controls for gamepad support (assignment requirement)
+    [SerializeField]
+    private PlayerInput playerInput;
+
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     // Update is called once per frame
     void Update()
 	{
@@ -39,7 +53,19 @@ public class PlayerMovement : MonoBehaviour
 
 		velocity += gravity * Time.deltaTime;
 		controller.Move(new Vector3(0, velocity, 0) * Time.deltaTime);
-	}
+
+		//makin player face where camera is facing based on player options and always when ADS is active
+		Quaternion targetRotation = Quaternion.Euler(0, cam.eulerAngles.y, 0);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        if (isAiming)
+		{
+			rotationSpeed = 50f;
+        }
+		else
+		{
+			rotationSpeed = 0f;
+		}
+    }
 
 	// This function is called when the collider on this GameObject collides with another collider
 	private void OnTriggerEnter(Collider other)
