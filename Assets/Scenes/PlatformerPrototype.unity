@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17861453, g: 0.22365052, b: 0.30559972, a: 1}
+  m_IndirectSpecularColor: {r: 0.17861477, g: 0.22365086, b: 0.3056002, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2193,13 +2193,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5848258578300271212, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258578300271212, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258578300271212, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258579508755147, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258579508755147, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258579508755147, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258579692127758, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258579692127758, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258579692127758, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5848258579692127758, guid: f360ca46f1515c043870a0883360d798, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016897676
+      value: 0.000000016594669
       objectReference: {fileID: 0}
     - target: {fileID: 5848258579692127758, guid: f360ca46f1515c043870a0883360d798, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000072089796
+      value: -6.967684e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5848258579692974304, guid: f360ca46f1515c043870a0883360d798, type: 3}
       propertyPath: m_Name
@@ -2247,6 +2283,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5848258579692974305, guid: f360ca46f1515c043870a0883360d798, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258579853841846, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258579853841846, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258579853841846, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258580078388613, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258580078388613, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848258580078388613, guid: f360ca46f1515c043870a0883360d798, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
