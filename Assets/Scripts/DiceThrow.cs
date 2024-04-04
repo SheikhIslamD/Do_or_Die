@@ -14,16 +14,21 @@ public class DiceThrow : MonoBehaviour
     public Transform headPoint, player;
     //for bug fixing?
     public bool allowInvoke = true;
+    [SerializeField] private Transform debugTransform;
 
     public ParticleSystem magicPoofHead;
     public ParticleSystem magicPoofDice;
     //adding stuff for recalling
-    public Rigidbody rigidb;
-    public BoxCollider collider;
+    private Rigidbody rigidb;
+    private BoxCollider collider;
     //rolling a number
     public Material[] material;
     public int rollNumber;
     Renderer rend;
+    //solution to raycast hitting player?
+    [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
+
+    //need to switch to new input system for controls later
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +51,10 @@ public class DiceThrow : MonoBehaviour
                 Debug.Log("And we found the script!");
             }
         }
-        
+
+        //cleaning up inspector a bit
+        rigidb = GetComponent<Rigidbody>();
+        collider = GetComponent<BoxCollider>();
 
         //dice position attached to player
         diceHeld = true;
@@ -63,7 +71,7 @@ public class DiceThrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if dice is held, lmb throws it
+        //if dice is held, lmb throws it - if not held, lmb retrieves it
         if (diceHeld && Input.GetKeyDown(KeyCode.Mouse0)) Throw();
         if (!diceHeld && Input.GetKeyDown(KeyCode.Mouse0)) Recall();
 
@@ -71,6 +79,14 @@ public class DiceThrow : MonoBehaviour
         if (!diceHeld && !diceLanded) diceRoll();
 
         //for the more advanced dice roll to be added with raycasts and stuff, could isGrounded be useful?
+
+        //raycast and render to check aiming
+        Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColliderLayerMask))
+        {
+            debugTransform.position = raycastHit.point;
+        }
     }
 
     public void Throw()
@@ -91,6 +107,8 @@ public class DiceThrow : MonoBehaviour
             targetPoint = hit.point;
         else
             targetPoint = ray.GetPoint(75);
+
+        debugTransform.position = targetPoint;
 
         //headpoint to target point direction calculation
         Vector3 direction = targetPoint - headPoint.position;

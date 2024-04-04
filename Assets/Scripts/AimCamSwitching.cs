@@ -4,18 +4,22 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
 
-public class ADSCamSwitching : MonoBehaviour
+public class AimCamSwitching : MonoBehaviour
 {
     [SerializeField]
+    private CinemachineVirtualCamera aimCamera;
+    
     private PlayerInput playerInput;
-
     private InputAction aimAction;
-    private CinemachineVirtualCamera virtualCamera;
+
+    //trying it this way to see, maybe will change it
+    private PlayerMovement playerMovement;
 
     private void Awake()
     {
-        virtualCamera = GetComponent<CinemachineVirtualCamera>();
+        playerInput = GetComponent<PlayerInput>();
         aimAction = playerInput.actions["Aim"];
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     private void OnEnable()
@@ -32,12 +36,14 @@ public class ADSCamSwitching : MonoBehaviour
 
     private void StartAim()
     {
-        virtualCamera.Priority += 10;
+        aimCamera.Priority += 10;
+        playerMovement.rotationSpeed = 50f;
     }
 
     private void CancelAim()
     {
-        virtualCamera.Priority -= 10;
+        aimCamera.Priority -= 10;
+        playerMovement.rotationSpeed = 0f;
     }
 
 /*    // Start is called before the first frame update
