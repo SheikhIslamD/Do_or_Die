@@ -755,7 +755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777466648728992062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6341374, y: 0.8660253, z: -3}
+  m_LocalPosition: {x: 1.6324494, y: 0.8660253, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -984,6 +984,9 @@ MonoBehaviour:
   aimColliderLayerMask:
     serializedVersion: 2
     m_Bits: 1473
+  diceRenderer: {fileID: 1777466648814519567}
+  diceHeadRenderer: {fileID: 6030993313988291004}
+  hatRenderer: {fileID: 622821925574018284}
 --- !u!54 &1777466648814519565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2216,6 +2219,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -4161369568681901532, guid: 903a2a34744ca9348913d566f57e262e, type: 3}
+--- !u!137 &622821925574018284 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 598977890766279534, guid: 903a2a34744ca9348913d566f57e262e, type: 3}
+  m_PrefabInstance: {fileID: 66228026459150210}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &4535450174014052927 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -4748361991329772099, guid: 903a2a34744ca9348913d566f57e262e, type: 3}
@@ -2224,6 +2232,11 @@ Animator:
 --- !u!4 &5283308038024060870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3910990755373119420, guid: 903a2a34744ca9348913d566f57e262e, type: 3}
+  m_PrefabInstance: {fileID: 66228026459150210}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &6030993313988291004 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6005882693223644734, guid: 903a2a34744ca9348913d566f57e262e, type: 3}
   m_PrefabInstance: {fileID: 66228026459150210}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1777466647590142761

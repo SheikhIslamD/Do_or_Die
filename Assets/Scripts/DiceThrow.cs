@@ -29,6 +29,9 @@ public class DiceThrow : MonoBehaviour
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
     public Renderer diceRenderer; //the dice gameobject
     public Renderer diceHeadRenderer; //the player model's dice head
+    public Renderer hatRenderer; //the player model's top hat
+    public Animator animator;
+
 
     //need to switch to new input system for controls later
 
@@ -90,20 +93,24 @@ public class DiceThrow : MonoBehaviour
             debugTransform.position = raycastHit.point;
         }
 
+        //makes the hat and dice head appear and reappear when thrown
         if (diceHeld == false)
         {
             diceRenderer.enabled = true;
             diceHeadRenderer.enabled = false;
+            hatRenderer.enabled = false;
         }
         else
         {
             diceRenderer.enabled = false;
             diceHeadRenderer.enabled = true;
+            hatRenderer.enabled = true;
         }
     }
 
     public void Throw()
     {
+        animator.SetTrigger("throw");
         //dice is no longer on head and is considered thrown, detach from headPoint parent
         diceHeld = false;
         transform.SetParent(null);
