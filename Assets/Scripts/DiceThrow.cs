@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class DiceThrow : MonoBehaviour
 {
@@ -14,18 +16,26 @@ public class DiceThrow : MonoBehaviour
     public Transform headPoint, player;
     //for bug fixing?
     public bool allowInvoke = true;
+	public bool jumpUpStart = false;
+	public bool jumpDownStart = false;
+	public bool speedUpStart = false;
+	public bool speedDownStart = false;
+	public TextMeshProUGUI rollText;
     [SerializeField] private Transform debugTransform;
 
     public ParticleSystem magicPoofHead;
     public ParticleSystem magicPoofDice;
-    //adding stuff for recalling
+    
+	//adding stuff for recalling
     private Rigidbody rigidb;
     private BoxCollider collider;
-    //rolling a number
+    
+	//rolling a number
     public Material[] material;
     public int rollNumber;
     Renderer rend;
-    //solution to raycast hitting player?
+    
+	//solution to raycast hitting player?
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
     public Renderer diceRenderer; //the dice gameobject
     public Renderer diceHeadRenderer; //the player model's dice head
@@ -33,15 +43,13 @@ public class DiceThrow : MonoBehaviour
     public Animator animator;
 
 
-    //need to switch to new input system for controls later
-
     // Start is called before the first frame update
     void Start()
     {
                     //THERE'S HELLA DEBUG LOG AND COMMENTS IN THIS FUNCTION, FEEL FREE TO REMOVE THEM
         
         //Referencing player controller script
-        GameObject diceHead = GameObject.Find("Dicehead");
+        GameObject diceHead = GameObject.Find("Dicehead Player");
         // Check if we find Dicehead
         if (diceHead != null)
         {
@@ -180,23 +188,63 @@ public class DiceThrow : MonoBehaviour
     //dice rolling stuff
     public void diceRoll()
     {
-        rollNumber = Random.Range(1, 6);
-        Debug.Log(rollNumber);
-        if (rollNumber == 1)
-        {
-            playerController.DamageHealth();
-            Debug.Log("You rolled a 1 and lost health");
-        }
+        rollNumber = Random.Range(1, 7);
+		rollText.text = "Roll: " + rollNumber;
+		
+		switch (rollNumber)
+		{
+			case 1:
+				playerController.DamageHealth();
+				break;
+			case 2:
+				if (!jumpDownStart)
+				{
+					jumpDownStart = true;
+					playerController.jump /= 2;
+					StartCoroutine("JumpDown");
+				}
+				break;
+			case 3:
+				if (!speedDownStart)
+				{
+					speedDownStart = true;
+					playerController.speed /= 2;
+					StartCoroutine("SpeedDown");
+				}
+				break;
+			case 4:
+				if (!speedUpStart)
+				{
+					speedUpStart = true;
+					playerController.speed *= 2;
+					StartCoroutine("SpeedUp");
+				}
+				break;
+			case 5:
+				if (!jumpUpStart)
+				{
+					jumpUpStart = true;
+					playerController.jump *= 2;
+					StartCoroutine("JumpUp");
+				}
+				break;
+			case 6:
+				playerController.IncreaseHealth();
+				break;
+			default:
+				break;
+		}
+		
         rend.sharedMaterial = material[rollNumber];
         magicPoofDice.Play();
         diceLanded = true;
-
     }
 
     public void diceReset()
     {
         rollNumber = 0;
         rend.sharedMaterial = material[rollNumber];
+		rollText.text = "Roll: ";
     }
 
     //use oncollision here to snap the dice to reciever spots?
@@ -204,4 +252,32 @@ public class DiceThrow : MonoBehaviour
     {
         
     }
+	
+	IEnumerator SpeedUp()
+	{
+		yield return new WaitForSeconds(10f);
+		playerController.speed /= 2;
+		speedUpStart = false;
+	}
+	
+	IEnumerator SpeedDown()
+	{
+		yield return new WaitForSeconds(10f);
+		playerController.speed *= 2;
+		speedDownStart = false;
+	}
+	
+	IEnumerator JumpUp()
+	{
+		yield return new WaitForSeconds(10f);
+		playerController.jump /= 2;
+		jumpUpStart = false;
+	}
+	
+	IEnumerator JumpDown()
+	{
+		yield return new WaitForSeconds(10f);
+		playerController.jump *= 2;
+		jumpDownStart = false;
+	}
 }
