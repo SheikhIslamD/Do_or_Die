@@ -12,7 +12,7 @@ public class DiceThrow : MonoBehaviour
     public float throwForce, upwardForce;
     public float cooldown;
     public bool diceHeld, diceLanded;
-    public Camera camera;
+    public Camera playerCamera;
     public Transform headPoint, player;
     //for bug fixing?
     public bool allowInvoke = true;
@@ -28,7 +28,7 @@ public class DiceThrow : MonoBehaviour
     
 	//adding stuff for recalling
     private Rigidbody rigidb;
-    private BoxCollider collider;
+    private BoxCollider boxcollider;
     
 	//rolling a number
     public Material[] material;
@@ -67,12 +67,12 @@ public class DiceThrow : MonoBehaviour
 
         //cleaning up inspector a bit
         rigidb = GetComponent<Rigidbody>();
-        collider = GetComponent<BoxCollider>();
+        boxcollider = GetComponent<BoxCollider>();
 
         //dice position attached to player
         diceHeld = true;
         rigidb.isKinematic = true;
-        collider.isTrigger = true;
+        boxcollider.isTrigger = true;
 
         //rolling number material
         rollNumber = 0;
@@ -123,10 +123,10 @@ public class DiceThrow : MonoBehaviour
         diceHeld = false;
         transform.SetParent(null);
         rigidb.isKinematic = false;
-        collider.isTrigger = false;
+        boxcollider.isTrigger = false;
 
         //hit position using raycast
-        Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
         //raycast hit check
@@ -152,22 +152,8 @@ public class DiceThrow : MonoBehaviour
         float random = Random.Range(-1000f, 1000f);
         rigidb.AddTorque(new Vector3(random, random, random));
         diceInThrow.GetComponent<Rigidbody>().AddForce(direction.normalized * throwForce, ForceMode.Impulse);
-        diceInThrow.GetComponent<Rigidbody>().AddForce(camera.transform.up * upwardForce, ForceMode.Impulse);
-
-
-        /*        //start cooldown (not needed)
-                if (allowInvoke)
-                {
-                    Invoke("Cooldown", cooldown);
-                    allowInvoke = false;
-                }*/
+        diceInThrow.GetComponent<Rigidbody>().AddForce(playerCamera.transform.up * upwardForce, ForceMode.Impulse);
     }
-
-    /*    private void Cooldown()
-        {
-            diceHeld = true;
-            allowInvoke = true;
-        }*/
 
     public void Recall()
     {
@@ -175,7 +161,7 @@ public class DiceThrow : MonoBehaviour
         diceLanded = false;
         //move dice back to head, play poof
         rigidb.isKinematic = true;
-        collider.isTrigger = true;
+        boxcollider.isTrigger = true;
         transform.SetParent(headPoint);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(Vector3.zero);

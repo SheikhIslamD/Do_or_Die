@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 				animator.SetBool("is_running", true);
 				animator.SetBool("is_idle", false);
 			}
-			// TODO: In the appropriate script, call:   animator.SetTrigger("throw");  when the player throws the die. 
+			// *(DONE): In the appropriate script, call:   animator.SetTrigger("throw");  when the player throws the die. 
 
 		}
 		else
