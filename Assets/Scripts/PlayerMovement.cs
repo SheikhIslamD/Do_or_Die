@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
+
 public class PlayerMovement : MonoBehaviour
 {
-
 	public int health = 3;
 	public CharacterController controller;
 	public Transform cam;
@@ -17,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 	public float jump = 2f;
 	public float gravity = -9.81f;
 	float velocity;
+	public TextMeshProUGUI healthText;
 
 	//for turning player to face cam
 	public float rotationSpeed = 0f;
@@ -27,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+		healthText.text = "Health: 3";
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -104,7 +108,16 @@ public class PlayerMovement : MonoBehaviour
 		}
         else
         {
-			Debug.Log("Your health is now: " + health);
+			healthText.text = "Health: " + health;
+		}
+	}
+	
+	public void IncreaseHealth()
+	{
+		if (health < 3)
+		{
+			health++;
+			healthText.text = "Health: " + health;
 		}
 	}
 }
