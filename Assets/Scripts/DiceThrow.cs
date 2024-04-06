@@ -27,6 +27,8 @@ public class DiceThrow : MonoBehaviour
     Renderer rend;
     //solution to raycast hitting player?
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
+    public Renderer diceRenderer; //the dice gameobject
+    public Renderer diceHeadRenderer; //the player model's dice head
 
     //need to switch to new input system for controls later
 
@@ -86,6 +88,17 @@ public class DiceThrow : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColliderLayerMask))
         {
             debugTransform.position = raycastHit.point;
+        }
+
+        if (diceHeld == false)
+        {
+            diceRenderer.enabled = true;
+            diceHeadRenderer.enabled = false;
+        }
+        else
+        {
+            diceRenderer.enabled = false;
+            diceHeadRenderer.enabled = true;
         }
     }
 
