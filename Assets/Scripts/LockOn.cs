@@ -16,7 +16,7 @@ public class LockOn : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private string TargetTag; //Assign the target tag
     [SerializeField] private KeyCode _Input; //Assign the lock on input
-    [SerializeField] private Vector2 targetLockOffset;
+    [SerializeField] private Vector2 targetLockOffset; //Tilts the camera when locked on so the player can see themselves and the target
     [SerializeField] private float minDistance; // minimum distance to stop rotation if you get close to target
     [SerializeField] private float maxDistance;
 

@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
+
 public class PlayerMovement : MonoBehaviour
 {
-
 	public int health = 3;
 	public CharacterController controller;
 	public Transform cam;
+	public Animator animator; 
 
 	public float speed = 7f;
 	public float turnSmooth = 0.1f;
@@ -15,6 +19,21 @@ public class PlayerMovement : MonoBehaviour
 	public float jump = 2f;
 	public float gravity = -9.81f;
 	float velocity;
+	public TextMeshProUGUI healthText;
+
+	//for turning player to face cam
+	public float rotationSpeed = 0f;
+	public bool isAiming;
+    //set up input system for future (we may need to rebind controls for gamepad support (assignment requirement)
+    [SerializeField]
+    private PlayerInput playerInput;
+
+    private void Awake()
+    {
+		healthText.text = "Health: 3";
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     // Update is called once per frame
     void Update()
 	{
@@ -25,6 +44,9 @@ public class PlayerMovement : MonoBehaviour
 		if (Input.GetButtonDown("Jump") && controller.isGrounded)
 		{
 			velocity = Mathf.Sqrt(jump * -2f * gravity);
+			animator.SetBool("is_running", false);
+			animator.SetBool("is_idle", false);
+			animator.SetTrigger("jump");
 		}
 
 		if (direction.magnitude >= 0.1f)
@@ -35,11 +57,36 @@ public class PlayerMovement : MonoBehaviour
 
 			Vector3 move = Quaternion.Euler(0f, orient, 0f) * Vector3.forward;
 			controller.Move(move.normalized * speed * Time.deltaTime);
+
+			if (controller.isGrounded)
+			{
+				animator.SetBool("is_running", true);
+				animator.SetBool("is_idle", false);
+			}
+			// *(DONE): In the appropriate script, call:   animator.SetTrigger("throw");  when the player throws the die. 
+
+		}
+		else
+		{
+			if (controller.isGrounded)
+			{
+				animator.SetBool("is_running", false);
+				animator.SetBool("is_idle", true);
+			}
+			else
+			{
+				animator.SetBool("is_running", false);
+				animator.SetBool("is_idle", false);
+			}
 		}
 
 		velocity += gravity * Time.deltaTime;
 		controller.Move(new Vector3(0, velocity, 0) * Time.deltaTime);
-	}
+
+		//makin player face where camera is facing when ADS is active
+		Quaternion targetRotation = Quaternion.Euler(0, cam.eulerAngles.y, 0);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
 
 	// This function is called when the collider on this GameObject collides with another collider
 	private void OnTriggerEnter(Collider other)
@@ -61,7 +108,16 @@ public class PlayerMovement : MonoBehaviour
 		}
         else
         {
-			Debug.Log("Your health is now: " + health);
+			healthText.text = "Health: " + health;
+		}
+	}
+	
+	public void IncreaseHealth()
+	{
+		if (health < 3)
+		{
+			health++;
+			healthText.text = "Health: " + health;
 		}
 	}
 }
