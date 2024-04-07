@@ -242,17 +242,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 111395885398196088, guid: b94ae7956d647ff4187133fed912f6a0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000016897678
+      objectReference: {fileID: 0}
+    - target: {fileID: 111395885398196088, guid: b94ae7956d647ff4187133fed912f6a0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000000007208979
+      objectReference: {fileID: 0}
     - target: {fileID: 1777466648279416582, guid: b94ae7956d647ff4187133fed912f6a0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.13870122
+      value: 0.13870123
       objectReference: {fileID: 0}
     - target: {fileID: 1777466648279416582, guid: b94ae7956d647ff4187133fed912f6a0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.220446e-16
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1777466648728992061, guid: b94ae7956d647ff4187133fed912f6a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7986052
+      value: 1.6273849
       objectReference: {fileID: 0}
     - target: {fileID: 1777466648814519561, guid: b94ae7956d647ff4187133fed912f6a0, type: 3}
       propertyPath: rollText
@@ -422,7 +430,7 @@ GameObject:
   - component: {fileID: 1440035472}
   - component: {fileID: 1440035471}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UIHudCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
