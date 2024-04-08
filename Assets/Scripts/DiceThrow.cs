@@ -152,6 +152,7 @@ public class DiceThrow : MonoBehaviour
         float random = Random.Range(-1000f, 1000f);
         rigidb.AddTorque(new Vector3(random, random, random));
         diceInThrow.GetComponent<Rigidbody>().AddForce(direction.normalized * throwForce, ForceMode.Impulse);
+        diceInThrow.GetComponent<Rigidbody>().AddForce(playerCamera.transform.up * upwardForce, ForceMode.Impulse);
     }
 
     public void Recall()

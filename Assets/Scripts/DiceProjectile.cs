@@ -69,7 +69,7 @@ public class DiceProjectile : MonoBehaviour
     {
         //if dice is held, lmb throws it - if not held, lmb retrieves it
         if (diceHeld && Input.GetKeyDown(KeyCode.Mouse0)) Throw();
-        if (!diceHeld && Input.GetKeyDown(KeyCode.Mouse1)) Recall();
+        if (!diceHeld && Input.GetKeyDown(KeyCode.Mouse0)) Recall();
         
         //makes the hat and dice head appear and reappear when thrown
         if (diceHeld == false)
@@ -90,20 +90,13 @@ public class DiceProjectile : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColliderLayerMask))
         {
+            aimLocator.position = raycastHit.point;
             targetPoint = raycastHit.point;
-            aimLocator.position = targetPoint;
-            
-        }
-        else
-        {
-            targetPoint = ray.GetPoint(100);
-            aimLocator.position = targetPoint;
         }
     }
 
     public void Throw()
     {
-        
         animator.SetTrigger("throw");
         //dice is no longer on head and is considered thrown, detach from headPoint parent and play poof
         diceHeld = false;
@@ -111,16 +104,14 @@ public class DiceProjectile : MonoBehaviour
         rigidb.isKinematic = false;
         boxcollider.isTrigger = false;
         magicPoofHead.Play();
-        
+
         //headpoint to target point direction calculation
         Vector3 direction = targetPoint - headPoint.position;
-        
+
         //use player movement + add rotation and throwing force
         float random = Random.Range(-1f, 1f);
-        rigidb.AddTorque(new Vector3(random, random, random) * 100);
+        rigidb.AddTorque(new Vector3(random, random, random) * 10);
         dice.GetComponent<Rigidbody>().AddForce(direction.normalized * throwForce, ForceMode.Impulse);
-        
-        diceRoll();
     }
 
     public void Recall()
@@ -139,10 +130,9 @@ public class DiceProjectile : MonoBehaviour
 
     public void diceRoll()
     {
-        
         rollNumber = Random.Range(1, 7);
         rollText.text = "Roll: " + rollNumber;
-        
+
         switch (rollNumber)
         {
             case 1:
@@ -186,7 +176,6 @@ public class DiceProjectile : MonoBehaviour
             default:
                 break;
         }
-        
         rend.sharedMaterial = material[rollNumber];
     }
 
