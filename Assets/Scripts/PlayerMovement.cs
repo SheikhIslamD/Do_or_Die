@@ -8,6 +8,7 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
+	public GameObject player;
 	public int health = 3;
 	public CharacterController controller;
 	public Transform cam;
@@ -27,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     //set up input system for future (we may need to rebind controls for gamepad support (assignment requirement)
     [SerializeField]
     private PlayerInput playerInput;
+	public Lose lose;
+	public Transform respawn;
 
     private void Awake()
     {
@@ -88,23 +91,16 @@ public class PlayerMovement : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-	// This function is called when the collider on this GameObject collides with another collider
-	private void OnTriggerEnter(Collider other)
-	{
-		// Check if the collider we collided with has the Zone tag
-		if (other.CompareTag("Zone"))
-		{
-			DamageHealth();
-		}
-	}
-
 	public void DamageHealth()
     {
 		health--;
-		if (health == 0)
+		if (health <= 0)
 		{
 			Debug.Log("Game Over");
-			SceneManager.LoadScene("LoseScreen");
+			Destroy(player.gameObject);
+			lose.LoseUI.SetActive(true);
+			lose.UIHud.SetActive(false);
+			Cursor.lockState = CursorLockMode.None;
 		}
         else
         {
