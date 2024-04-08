@@ -28,10 +28,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
 
+	AudioManager audioManager;
+
     private void Awake()
     {
 		healthText.text = "Health: 3";
         Cursor.lockState = CursorLockMode.Locked;
+		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
