@@ -24,10 +24,12 @@ public class DiceProjectile : MonoBehaviour
     public bool speedDownStart = false;
 
     [Header("Roll #s and materials")]
-    public Material[] material;
+/*    public Material[] material;
+    Renderer rend;*/
     public int rollNumber;
     public TextMeshProUGUI rollText;
-    Renderer rend;
+    private MeshFilter diceFilter;
+    public Mesh[] diceModels;
 
     [Header("Renders for dice on/off head")]
     public Renderer diceRenderer; //the dice gameobject
@@ -61,9 +63,11 @@ public class DiceProjectile : MonoBehaviour
 
         //rolling number material default assignments
         rollNumber = 0;
-        rend = GetComponent<Renderer>();
-        rend.enabled = true;
-        rend.sharedMaterial = material[rollNumber];
+        /*        rend = GetComponent<Renderer>();
+                rend.enabled = true;
+                rend.sharedMaterial = material[rollNumber];*/
+        diceFilter = GetComponent<MeshFilter>();
+        diceFilter.mesh = diceModels[rollNumber];
 
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
@@ -129,6 +133,8 @@ public class DiceProjectile : MonoBehaviour
 
         audioManager.playSFX(audioManager.dicethrow);
         audioManager.playSFX(audioManager.poof);
+
+        transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
     }
 
     public void Recall()
@@ -196,14 +202,16 @@ public class DiceProjectile : MonoBehaviour
             default:
                 break;
         }
-        
-        rend.sharedMaterial = material[rollNumber];
+
+        //rend.sharedMaterial = material[rollNumber];
+        diceFilter.mesh = diceModels[rollNumber];
     }
 
     public void diceReset()
     {
         rollNumber = 0;
-        rend.sharedMaterial = material[rollNumber];
+        //rend.sharedMaterial = material[rollNumber];
+        diceFilter.mesh = diceModels[rollNumber];
         rollText.text = "Roll: ";
     }
 

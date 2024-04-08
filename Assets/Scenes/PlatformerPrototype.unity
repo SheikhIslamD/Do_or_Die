@@ -2262,14 +2262,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2918794199905748409, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.000000016594669
-      objectReference: {fileID: 0}
-    - target: {fileID: 2918794199905748409, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -6.967684e-10
-      objectReference: {fileID: 0}
+    - target: {fileID: 2387627380873440098, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
+      propertyPath: rollText
+      value: 
+      objectReference: {fileID: 559737470}
     - target: {fileID: 3576058576152693404, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_Name
       value: WORKING Dicehead yippie
@@ -2280,31 +2276,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576152693411, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.425713
+      value: 43.568245
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576152693411, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.47
+      value: 44.12
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576152693411, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.760681
+      value: 7.7546554
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576152693411, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071079
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576152693411, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576152693411, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.70710576
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576152693411, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576152693411, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2312,19 +2308,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576152693411, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576152693411, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3576058576409150460, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.7558594
-      objectReference: {fileID: 0}
-    - target: {fileID: 3576058576409150460, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.866025
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576461021121, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: rollText
@@ -2334,10 +2322,6 @@ PrefabInstance:
       propertyPath: lose
       value: 
       objectReference: {fileID: 1030522353}
-    - target: {fileID: 3576058576495542622, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1342917254}
     - target: {fileID: 3576058576495542622, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: respawn
       value: 
