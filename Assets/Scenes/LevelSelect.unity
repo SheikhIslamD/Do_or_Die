@@ -723,6 +723,7 @@ GameObject:
   - component: {fileID: 587802961}
   - component: {fileID: 587802963}
   - component: {fileID: 587802962}
+  - component: {fileID: 587802964}
   m_Layer: 5
   m_Name: background
   m_TagString: Untagged
@@ -739,7 +740,7 @@ RectTransform:
   m_GameObject: {fileID: 587802960}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7326007, y: 0.7326007, z: 0.7326007}
+  m_LocalScale: {x: 0.7831141, y: 0.7831141, z: 0.7831141}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1095792315}
@@ -792,6 +793,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587802960}
   m_CullTransparentMesh: 1
+--- !u!114 &587802964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587802960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd21ffcbc8cbd44685d20762088b7bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelSelectUI: {fileID: 1089473742}
+  mouseLookEnabled: 0
+  GameIsPaused: 0
+  levelButtons:
+  - {fileID: 1095792316}
+  - {fileID: 1443390679}
+  - {fileID: 1113012046}
 --- !u!1 &716168772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,7 +1072,6 @@ GameObject:
   - component: {fileID: 1089473745}
   - component: {fileID: 1089473744}
   - component: {fileID: 1089473743}
-  - component: {fileID: 1089473747}
   m_Layer: 5
   m_Name: Level Select
   m_TagString: Untagged
@@ -1142,25 +1161,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1089473747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089473742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddd21ffcbc8cbd44685d20762088b7bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LevelSelectUI: {fileID: 587802960}
-  mouseLookEnabled: 0
-  GameIsPaused: 0
-  levelButtons:
-  - {fileID: 1095792316}
-  - {fileID: 1443390679}
-  - {fileID: 1113012046}
 --- !u!1 &1095792314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1245,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1089473747}
+      - m_Target: {fileID: 587802964}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
         m_MethodName: Level1
         m_Mode: 1
@@ -1379,7 +1379,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1089473747}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
         m_MethodName: BossLevel
         m_Mode: 1
@@ -1513,7 +1513,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1089473747}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
         m_MethodName: Level2
         m_Mode: 1
@@ -1563,7 +1563,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443390677}
   m_CullTransparentMesh: 1
---- !u!1 &1486257949
+--- !u!1 &1710406072
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1571,9 +1571,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1486257952}
-  - component: {fileID: 1486257951}
-  - component: {fileID: 1486257950}
+  - component: {fileID: 1710406075}
+  - component: {fileID: 1710406074}
+  - component: {fileID: 1710406073}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1581,21 +1581,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1486257950
+--- !u!81 &1710406073
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486257949}
+  m_GameObject: {fileID: 1710406072}
   m_Enabled: 1
---- !u!20 &1486257951
+--- !u!20 &1710406074
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486257949}
+  m_GameObject: {fileID: 1710406072}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
@@ -1632,13 +1632,13 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!4 &1486257952
+--- !u!4 &1710406075
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486257949}
+  m_GameObject: {fileID: 1710406072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}

@@ -14,7 +14,7 @@ public class LevelSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LevelSelectUI.SetActive(false);
+        //LevelSelectUI.SetActive(false);
         //the last number is whatever number scene level select is in build settings
         int levelAt = PlayerPrefs.GetInt("levelAt", 2);
         //buttons after 1 are made uninteractable
@@ -51,7 +51,8 @@ public class LevelSelect : MonoBehaviour
 
     public void Level1()
     {
-        SceneManager.LoadScene("PlatformerPrototype");
+        SceneManager.LoadScene(3);
+        Debug.Log("Platform level loaded");
     }
 
     public void Level2()
