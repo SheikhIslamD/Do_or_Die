@@ -1154,13 +1154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd21ffcbc8cbd44685d20762088b7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelSelectUI: {fileID: 587802960}
-  mouseLookEnabled: 0
-  GameIsPaused: 0
-  levelButtons:
-  - {fileID: 1095792316}
-  - {fileID: 1443390679}
-  - {fileID: 1113012046}
 --- !u!1 &1095792314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,7 +1207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: -1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1348,7 +1341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: -1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
