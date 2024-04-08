@@ -6,17 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
+    /*
     public GameObject LevelSelectUI;
     public bool mouseLookEnabled;
     public bool GameIsPaused;
     public Button[] levelButtons;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        LevelSelectUI.SetActive(false);
+        //LevelSelectUI.SetActive(false);
         //the last number is whatever number scene level select is in build settings
-        int levelAt = PlayerPrefs.GetInt("levelAt", 2);
+        //int levelAt = PlayerPrefs.GetInt("levelAt", 2);
         //buttons after 1 are made uninteractable
         //for (int i = 0; i < levelButtons.Length; i++)
         //{
@@ -26,14 +27,14 @@ public class LevelSelect : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
             LevelSelectUI.SetActive(true);
         }
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Door")
@@ -41,17 +42,19 @@ public class LevelSelect : MonoBehaviour
             LevelSelectScreen();
         }
     }
-
+    
+    
     public void LevelSelectScreen()
     {
         LevelSelectUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }    
-
+    */
     public void Level1()
     {
-        SceneManager.LoadScene("ArtPrototype");
+        Debug.Log("Level1");
+        SceneManager.LoadScene("Platformer Prototype");
     }
 
     public void Level2()
@@ -63,11 +66,11 @@ public class LevelSelect : MonoBehaviour
     {
         SceneManager.LoadScene("BossPrototype");
     }
-
+    /*
     public void Exit()
     {
         LevelSelectUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-    }
+    }*/
 }

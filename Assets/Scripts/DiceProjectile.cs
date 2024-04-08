@@ -68,6 +68,7 @@ public class DiceProjectile : MonoBehaviour
     void Update()
     {
         //if dice is held, lmb throws it - if not held, lmb retrieves it
+        
         if (diceHeld && Input.GetKeyDown(KeyCode.Mouse0)) Throw();
         if (!diceHeld && Input.GetKeyDown(KeyCode.Mouse1)) Recall();
         
