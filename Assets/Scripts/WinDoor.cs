@@ -12,10 +12,13 @@ public class WinDoor : MonoBehaviour
     public bool GameIsPaused;
     public Button[] levelButtons;
 
+    AudioManager audioManager;
+
     void Start()
     {
         WinUI.SetActive(false);
         UIHud.SetActive(true);
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,10 +26,12 @@ public class WinDoor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             WinUI.SetActive(true);
-            //Time.timeScale = 0f;
+            //Time.timeScale = 0;
             GameIsPaused = true;
             UIHud.SetActive(false);
             Debug.Log("You Win!");
+
+            audioManager.playSFX(audioManager.win);
         }
     }
 

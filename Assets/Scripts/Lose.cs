@@ -21,7 +21,7 @@ public class Lose : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+/*    void Update()
     {
         if (playerScript.health <= 0)
         {
@@ -29,7 +29,7 @@ public class Lose : MonoBehaviour
             GameIsPaused = true;
             Cursor.lockState = CursorLockMode.None;
         }
-    }
+    }*/
 
     public void Restart()
     {

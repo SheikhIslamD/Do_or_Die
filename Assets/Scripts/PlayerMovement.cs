@@ -104,10 +104,15 @@ public class PlayerMovement : MonoBehaviour
 			lose.LoseUI.SetActive(true);
 			lose.UIHud.SetActive(false);
 			Cursor.lockState = CursorLockMode.None;
-		}
+
+			audioManager.playSFX(audioManager.lose);
+
+            //Time.timeScale = 0;
+        }
         else
         {
 			healthText.text = "Health: " + health;
+			audioManager.playSFX(audioManager.damage);
 		}
 	}
 	
