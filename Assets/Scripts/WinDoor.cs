@@ -34,6 +34,6 @@ public class WinDoor : MonoBehaviour
     {
         WinUI.SetActive(true);
         GameIsPaused = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //add + 1 for next level
     }
 }

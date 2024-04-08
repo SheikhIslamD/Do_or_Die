@@ -51,7 +51,7 @@ public class LevelSelect : MonoBehaviour
 
     public void Level1()
     {
-        SceneManager.LoadScene("ArtPrototype");
+        SceneManager.LoadScene("PlatformerPrototype");
     }
 
     public void Level2()

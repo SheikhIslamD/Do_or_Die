@@ -27,6 +27,7 @@ public class Lose : MonoBehaviour
         {
             LoseUI.SetActive(true);
             GameIsPaused = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
