@@ -40,6 +40,8 @@ public class DiceProjectile : MonoBehaviour
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
     private Vector3 targetPoint;
 
+    AudioManager audioManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +64,8 @@ public class DiceProjectile : MonoBehaviour
         rend = GetComponent<Renderer>();
         rend.enabled = true;
         rend.sharedMaterial = material[rollNumber];
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -122,6 +126,9 @@ public class DiceProjectile : MonoBehaviour
         dice.GetComponent<Rigidbody>().AddForce(direction.normalized * throwForce, ForceMode.Impulse);
         
         diceRoll();
+
+        audioManager.playSFX(audioManager.dicethrow);
+        audioManager.playSFX(audioManager.poof);
     }
 
     public void Recall()
@@ -136,6 +143,8 @@ public class DiceProjectile : MonoBehaviour
         transform.localScale = Vector3.one;
         magicPoofHead.Play();
         diceReset();
+
+        audioManager.playSFX(audioManager.poof);
     }
 
     public void diceRoll()

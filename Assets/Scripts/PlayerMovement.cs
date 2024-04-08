@@ -31,10 +31,13 @@ public class PlayerMovement : MonoBehaviour
 	public Lose lose;
 	public Transform respawn;
 
+	AudioManager audioManager;
+
     private void Awake()
     {
 		healthText.text = "Health: 3";
         Cursor.lockState = CursorLockMode.Locked;
+		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
