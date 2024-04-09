@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class TestScript3 : MonoBehaviour
+public class XDynamic : MonoBehaviour
 {
     //adjust this to change speed
     [SerializeField]
@@ -20,8 +20,8 @@ public class TestScript3 : MonoBehaviour
     {
 
         //calculate what the new Y position will be
-        float newZ = Mathf.Sin(Time.time * speed) * height + pos.z;
+        float newX = Mathf.Sin(Time.time * speed) * height + pos.x;
         //set the object's Y to the new calculated Y
-        transform.position = new Vector3(transform.position.x, transform.position.y, newZ);
+        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
     }
 }

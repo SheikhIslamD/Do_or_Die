@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 790831365865309447}
   - component: {fileID: 8989177006297632087}
   - component: {fileID: 4793621643751077792}
-  - component: {fileID: -8751122493068241339}
+  - component: {fileID: -6860310740969466086}
   m_Layer: 0
-  m_Name: SlidamicCardKing
+  m_Name: ZDynamicCardKing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.010000002, y: 0.010000004, z: 0.010000049}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-8751122493068241339
+--- !u!114 &-6860310740969466086
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4199534452174229374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41680fa8da83cc1438fa95a08ba8e6bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f3f3eee2b5e4c1408679d999d5da618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5

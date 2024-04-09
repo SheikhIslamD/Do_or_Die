@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2846207896753532103}
   - component: {fileID: 5852888631093404823}
   - component: {fileID: 7998400169897647712}
-  - component: {fileID: -7127085978787590432}
+  - component: {fileID: 8253701543566044962}
   m_Layer: 0
-  m_Name: SwipamicCardToH
+  m_Name: YDynamicCardToH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.010000002, y: 0.010000004, z: 0.010000049}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-7127085978787590432
+--- !u!114 &8253701543566044962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1711901924541359806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f3f3eee2b5e4c1408679d999d5da618, type: 3}
+  m_Script: {fileID: 11500000, guid: aca67857dabffa744be467e5d10cbef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
