@@ -34,14 +34,4 @@ public class ActivatorScript : MonoBehaviour
 
     }
 
-    void OnCollisionStay(Collision collision)
-    {
-        Destroy(gameObject);
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        Destroy(gameObject);
-    }
-
 }
