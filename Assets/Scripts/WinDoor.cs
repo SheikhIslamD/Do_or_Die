@@ -16,8 +16,8 @@ public class WinDoor : MonoBehaviour
 
     void Start()
     {
-        WinUI.SetActive(false);
-        UIHud.SetActive(true);
+        //WinUI.SetActive(true);
+        //UIHud.SetActive(false);
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
