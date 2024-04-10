@@ -38,6 +38,6 @@ public class Lose : MonoBehaviour
 
     public void Quit()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Hub");
     }
 }

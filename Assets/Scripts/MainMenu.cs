@@ -47,6 +47,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void quitToHub()
+    {
+        SceneManager.LoadScene("Hub");
+    }
+
     public void quitGame()
     {
         Application.Quit();
