@@ -46,8 +46,6 @@ public class DiceThrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-                    //THERE'S HELLA DEBUG LOG AND COMMENTS IN THIS FUNCTION, FEEL FREE TO REMOVE THEM
-        
         //Referencing player controller script
         GameObject diceHead = GameObject.Find("Dicehead Player");
         // Check if we find Dicehead
@@ -141,8 +139,6 @@ public class DiceThrow : MonoBehaviour
         //headpoint to target point direction calculation
         Vector3 direction = targetPoint - headPoint.position;
 
-        //spawn dice off of head
-        //GameObject diceInThrow = Instantiate(dice,headPoint.position, Quaternion.identity);
         //assign dice to be thrown and play poof
         GameObject diceInThrow = dice;
         magicPoofHead.Play();

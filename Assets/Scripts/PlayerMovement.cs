@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	public CharacterController controller;
 	public Transform cam;
 	public Animator animator; 
+	public GameObject pause;
 
 	public float speed = 7f;
 	public float turnSmooth = 0.1f;
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 	//for turning player to face cam
 	public float rotationSpeed = 0f;
 	public bool isAiming;
-    //set up input system for future (we may need to rebind controls for gamepad support (assignment requirement)
+
     [SerializeField]
     private PlayerInput playerInput;
 	public Lose lose;
@@ -54,6 +55,12 @@ public class PlayerMovement : MonoBehaviour
 			animator.SetBool("is_idle", false);
 			animator.SetTrigger("jump");
 		}
+		
+		if (Input.GetButtonDown("Submit"))
+		{
+			Time.timeScale = 0;
+			pause.SetActive(true);
+		}
 
 		if (direction.magnitude >= 0.1f)
 		{
@@ -69,8 +76,6 @@ public class PlayerMovement : MonoBehaviour
 				animator.SetBool("is_running", true);
 				animator.SetBool("is_idle", false);
 			}
-			// *(DONE): In the appropriate script, call:   animator.SetTrigger("throw");  when the player throws the die. 
-
 		}
 		else
 		{
