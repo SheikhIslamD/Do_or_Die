@@ -9,7 +9,20 @@ public class MainMenu : MonoBehaviour
 	public GameObject credits;
 	public GameObject controls;
 	public GameObject pause;
-	
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && pause)
+        {
+			pauseGame();
+        }
+		else if (Input.GetKeyDown(KeyCode.Escape) && !pause)
+        {
+			resume();
+        }
+    }
+
     public void play()
     {
         SceneManager.LoadScene("MenuSelect");
@@ -35,13 +48,18 @@ public class MainMenu : MonoBehaviour
 	
 	public void resume()
 	{
-		if (pause.activeInHierarchy == true && (credits.activeInHierarchy == false || controls.activeInHierarchy == false))
-		{
-			Time.timeScale = 1;
-			pause.SetActive(false);
-		}
+		Time.timeScale = 1;
+		pause.SetActive(false);
 	}
-	
+
+	private void pauseGame()
+	{
+		Time.timeScale = 0;
+		pause.SetActive(true);
+		Cursor.lockState = CursorLockMode.None;
+
+	}
+
 	public void mainMenu()
     {
         SceneManager.LoadScene("MainMenu");

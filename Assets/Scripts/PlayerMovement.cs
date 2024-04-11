@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
 	AudioManager audioManager;
 
+	public MainMenu mainMenu;
+
     private void Awake()
     {
 		healthText.text = "Health: 3";
@@ -67,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
+		Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
