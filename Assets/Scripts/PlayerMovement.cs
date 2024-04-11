@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
@@ -13,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 	public CharacterController controller;
 	public Transform cam;
 	public Animator animator; 
-	public GameObject pause;
+	public GameObject pauseMenu;
 
 	public float speed = 7f;
 	public float turnSmooth = 0.1f;
@@ -27,10 +26,8 @@ public class PlayerMovement : MonoBehaviour
 	public float rotationSpeed = 0f;
 	public bool isAiming;
 
-    [SerializeField]
-    private PlayerInput playerInput;
+    public PlayerControls playerInput;
 	public Lose lose;
-	public Transform respawn;
 
 	AudioManager audioManager;
 
@@ -39,28 +36,44 @@ public class PlayerMovement : MonoBehaviour
 		healthText.text = "Health: 3";
         Cursor.lockState = CursorLockMode.Locked;
 		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+		
+		playerInput = new PlayerControls();
+		playerInput.Player.Jump.performed += ctx => Jump();
+        playerInput.Player.Pause.performed += ctx => Pause();
+    }
+	
+	private void OnEnable()
+    {
+        playerInput.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerInput.Disable();
+    }
+
+    private void Jump()
+    {
+        if (controller.isGrounded)
+        {
+            velocity = Mathf.Sqrt(jump * -2f * gravity);
+            animator.SetBool("is_running", false);
+            animator.SetBool("is_idle", false);
+            animator.SetTrigger("jump");
+        }
+    }
+	
+	 private void Pause()
+    {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
 	{
-		float horizontal = Input.GetAxisRaw("Horizontal");
-		float vertical = Input.GetAxisRaw("Vertical");
-		Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-		if (Input.GetButtonDown("Jump") && controller.isGrounded)
-		{
-			velocity = Mathf.Sqrt(jump * -2f * gravity);
-			animator.SetBool("is_running", false);
-			animator.SetBool("is_idle", false);
-			animator.SetTrigger("jump");
-		}
-		
-		if (Input.GetButtonDown("Submit"))
-		{
-			Time.timeScale = 0;
-			pause.SetActive(true);
-		}
+		Vector2 moveInput = playerInput.Player.Move.ReadValue<Vector2>();
+		Vector3 direction = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
 
 		if (direction.magnitude >= 0.1f)
 		{
@@ -104,15 +117,12 @@ public class PlayerMovement : MonoBehaviour
 		health--;
 		if (health <= 0)
 		{
-			Debug.Log("Game Over");
 			Destroy(player.gameObject);
 			lose.LoseUI.SetActive(true);
 			lose.UIHud.SetActive(false);
 			Cursor.lockState = CursorLockMode.None;
 
 			audioManager.playSFX(audioManager.lose);
-
-            //Time.timeScale = 0;
         }
         else
         {
