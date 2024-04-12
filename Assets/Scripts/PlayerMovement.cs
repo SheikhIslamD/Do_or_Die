@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 	public CharacterController controller;
 	public Transform cam;
 	public Animator animator; 
-	public GameObject pauseMenu;
+	//public GameObject UIScript;
 
 	public float speed = 7f;
 	public float turnSmooth = 0.1f;
@@ -31,17 +31,17 @@ public class PlayerMovement : MonoBehaviour
 
 	AudioManager audioManager;
 
-	public MainMenu mainMenu;
+	//public MainMenu mainMenu;
 
     private void Awake()
     {
 		healthText.text = "Health: 3";
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
 		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 		
 		playerInput = new PlayerControls();
 		playerInput.Player.Jump.performed += ctx => Jump();
-        playerInput.Player.Pause.performed += ctx => Pause();
+        //playerInput.Player.Pause.performed += ctx => Pause();
     }
 	
 	private void OnEnable()
@@ -49,10 +49,10 @@ public class PlayerMovement : MonoBehaviour
         playerInput.Enable();
     }
 
-    private void OnDisable()
+/*    private void OnDisable()
     {
         playerInput.Disable();
-    }
+    }*/
 
     private void Jump()
     {
@@ -65,12 +65,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 	
-	 private void Pause()
+/*	 private void Pause()
     {
         Time.timeScale = 0;
-        pauseMenu.SetActive(true);
+        UIScript.SetActive(true);
 		Cursor.lockState = CursorLockMode.None;
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -120,9 +120,9 @@ public class PlayerMovement : MonoBehaviour
 		health--;
 		if (health <= 0)
 		{
-			Destroy(player.gameObject);
+			player.gameObject.SetActive(false);
 			lose.LoseUI.SetActive(true);
-			lose.UIHud.SetActive(false);
+			//lose.UIHud.SetActive(false);
 			Cursor.lockState = CursorLockMode.None;
 
 			audioManager.playSFX(audioManager.lose);

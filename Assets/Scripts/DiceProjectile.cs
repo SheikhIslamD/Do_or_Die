@@ -45,6 +45,7 @@ public class DiceProjectile : MonoBehaviour
     private Vector3 targetPoint;
 
     AudioManager audioManager;
+    UIScript UIScript;
 
 
     // Start is called before the first frame update
@@ -76,6 +77,7 @@ public class DiceProjectile : MonoBehaviour
 		playerInput.Player.Throw.performed += _ => Throw();
 
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        UIScript = GameObject.FindGameObjectWithTag("Menu").GetComponent<UIScript>();
     }
 
     // Update is called once per frame
@@ -113,7 +115,7 @@ public class DiceProjectile : MonoBehaviour
 
     public void Throw()
     {
-		if (diceHeld)
+		if (diceHeld && !UIScript.GameIsPaused)
 		{
 			animator.SetTrigger("throw");
 			//dice is no longer on head and is considered thrown, detach from headPoint parent and play poof
@@ -146,7 +148,7 @@ public class DiceProjectile : MonoBehaviour
 
     public void Recall()
     {
-		if (!diceHeld)
+		if (!diceHeld && !UIScript.GameIsPaused)
 		{
 			diceHeld = true;
 			//move dice back to head, play poof
