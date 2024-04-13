@@ -9,16 +9,15 @@ public class AimCamSwitching : MonoBehaviour
     [SerializeField]
     private CinemachineVirtualCamera aimCamera;
     
-    private PlayerInput playerInput;
+    public PlayerControls playerInput;
     private InputAction aimAction;
-
-    //trying it this way to see, maybe will change it
     private PlayerMovement playerMovement;
 
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
-        aimAction = playerInput.actions["Aim"];
+        playerInput = new PlayerControls();
+		playerInput.Enable();
+        aimAction = playerInput.Player.Aim;
         playerMovement = GetComponent<PlayerMovement>();
     }
 
@@ -45,16 +44,4 @@ public class AimCamSwitching : MonoBehaviour
         aimCamera.Priority -= 10;
         playerMovement.rotationSpeed = 0f;
     }
-
-/*    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }*/
 }

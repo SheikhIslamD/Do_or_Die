@@ -9,10 +9,11 @@ public class Lose : MonoBehaviour
     public GameObject LoseUI;
     public GameObject UIHud;
     public bool mouseLookEnabled;
-    public bool GameIsPaused;
+    //public bool GameIsPaused;
     public Button[] levelButtons;
 
     public PlayerMovement playerScript;
+    public UIScript UIScript;
 
     // Start is called before the first frame update
     void Start()
@@ -21,15 +22,15 @@ public class Lose : MonoBehaviour
     }
 
     // Update is called once per frame
-/*    void Update()
+    void Update()
     {
         if (playerScript.health <= 0)
         {
             LoseUI.SetActive(true);
-            GameIsPaused = true;
-            Cursor.lockState = CursorLockMode.None;
+            UIScript.GameIsPaused = true;
+            //Cursor.lockState = CursorLockMode.None;
         }
-    }*/
+    }
 
     public void Restart()
     {

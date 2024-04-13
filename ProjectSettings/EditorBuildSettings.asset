@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: fbca8003dc3544a4a8c17b49e0432a0c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HowtoPlay.unity
     guid: 0bffb46e37c06be43b644e64e596e744
   - enabled: 1
@@ -29,13 +29,14 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/BossPrototype.unity
     guid: c9a0c0502a53ee8468fc631a7c9fd3dc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Pause.unity
     guid: bc8350c00a2b02049bcaef82c21adb8e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/WinScreen.unity
     guid: 2e9fabfcc0e8444498af10466525220f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoseScreen.unity
     guid: 8ed91ea69a2ace444917bd48da3bb30e
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 06403be07a3ed8a46b0660755702908d, type: 2}
