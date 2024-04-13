@@ -19,15 +19,16 @@ public class DiceProjectile : MonoBehaviour
     public ParticleSystem magicPoofHead;
 	public PlayerControls playerInput;
 
-    [Header("Dice buffs/debuffs")]
+	//Effects are off for now, probably will be scrapped
+    /*[Header("Dice buffs/debuffs")]
     public bool jumpUpStart = false;
     public bool jumpDownStart = false;
     public bool speedUpStart = false;
-    public bool speedDownStart = false;
+    public bool speedDownStart = false;*/
 
     [Header("Roll #s and materials")]
-/*    public Material[] material;
-    Renderer rend;*/
+    //public Material[] material;
+    //Renderer rend;
     public int rollNumber;
     public TextMeshProUGUI rollText;
     private MeshFilter diceFilter;
@@ -45,8 +46,6 @@ public class DiceProjectile : MonoBehaviour
     private Vector3 targetPoint;
 
     AudioManager audioManager;
-    UIScript UIScript;
-
 
     // Start is called before the first frame update
     void Start()
@@ -66,36 +65,36 @@ public class DiceProjectile : MonoBehaviour
 
         //rolling number material default assignments
         rollNumber = 0;
-        /*        rend = GetComponent<Renderer>();
-                rend.enabled = true;
-                rend.sharedMaterial = material[rollNumber];*/
+        //rend = GetComponent<Renderer>();
+        //rend.enabled = true;
+        //rend.sharedMaterial = material[rollNumber];
         diceFilter = GetComponent<MeshFilter>();
         diceFilter.mesh = diceModels[rollNumber];
 		
 		playerInput = new PlayerControls();
 		playerInput.Enable();
-		playerInput.Player.Throw.performed += _ => Throw();
 
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        UIScript = GameObject.FindGameObjectWithTag("Menu").GetComponent<UIScript>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+		playerInput.Player.Throw.performed += ctx => Throw();
+		
         //makes the hat and dice head appear and reappear when thrown
-        if (diceHeld == false)
-        {
-            diceRenderer.enabled = true;
-            diceHeadRenderer.enabled = false;
-            hatRenderer.enabled = false;
-        }
-        else
-        {
-            diceRenderer.enabled = false;
-            diceHeadRenderer.enabled = true;
-            hatRenderer.enabled = true;
-        }
+		if (diceHeld == false)
+		{
+			diceRenderer.enabled = true;
+			diceHeadRenderer.enabled = false;
+			hatRenderer.enabled = false;
+		}
+		else
+		{
+			diceRenderer.enabled = false;
+			diceHeadRenderer.enabled = true;
+			hatRenderer.enabled = true;
+		}
 
         //raycast and render to hit/show target respectively
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
@@ -115,40 +114,43 @@ public class DiceProjectile : MonoBehaviour
 
     public void Throw()
     {
-		if (diceHeld && !UIScript.GameIsPaused)
+		if (Time.timeScale != 0)
 		{
-			animator.SetTrigger("throw");
-			//dice is no longer on head and is considered thrown, detach from headPoint parent and play poof
-			diceHeld = false;
-			transform.SetParent(null);
-			rigidb.isKinematic = false;
-			boxcollider.isTrigger = false;
-			magicPoofHead.Play();
+			if (diceHeld)
+			{
+				animator.SetTrigger("throw");
+				//dice is no longer on head and is considered thrown, detach from headPoint parent and play poof
+				diceHeld = false;
+				transform.SetParent(null);
+				rigidb.isKinematic = false;
+				boxcollider.isTrigger = false;
+				magicPoofHead.Play();
         
-			//headpoint to target point direction calculation
-			Vector3 direction = targetPoint - headPoint.position;
+				//headpoint to target point direction calculation
+				Vector3 direction = targetPoint - headPoint.position;
         
-			//use player movement + add rotation and throwing force
-			float random = Random.Range(-1f, 1f);
-			rigidb.AddTorque(new Vector3(random, random, random) * 100);
-			dice.GetComponent<Rigidbody>().AddForce(direction.normalized * throwForce, ForceMode.Impulse);
+				//use player movement + add rotation and throwing force
+				float random = Random.Range(-1f, 1f);
+				rigidb.AddTorque(new Vector3(random, random, random) * 100);
+				dice.GetComponent<Rigidbody>().AddForce(direction.normalized * throwForce, ForceMode.Impulse);
         
-			diceRoll();
+				diceRoll();
 
-			audioManager.playSFX(audioManager.dicethrow);
-			audioManager.playSFX(audioManager.poof);
+				audioManager.playSFX(audioManager.dicethrow);
+				audioManager.playSFX(audioManager.poof);
 
-			transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
-		}
-		else
-		{
-			Recall();
+				transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+			}
+			else
+			{
+				Recall();
+			}
 		}
     }
 
     public void Recall()
     {
-		if (!diceHeld && !UIScript.GameIsPaused)
+		if (!diceHeld)
 		{
 			diceHeld = true;
 			//move dice back to head, play poof
@@ -165,6 +167,7 @@ public class DiceProjectile : MonoBehaviour
 		}
     }
 
+	//Will roll random dice number and hnadle effects
     public void diceRoll()
     {
         rollNumber = Random.Range(1, 7);
@@ -175,7 +178,7 @@ public class DiceProjectile : MonoBehaviour
             case 1:
                 playerController.DamageHealth();
                 break;
-            case 2:
+            /*case 2:
                 if (!jumpDownStart)
                 {
                     jumpDownStart = true;
@@ -209,7 +212,7 @@ public class DiceProjectile : MonoBehaviour
                 break;
             case 6:
                 playerController.IncreaseHealth();
-                break;
+                break;*/
             default:
                 break;
         }
@@ -226,7 +229,7 @@ public class DiceProjectile : MonoBehaviour
         rollText.text = "Roll: ";
     }
 
-    IEnumerator SpeedUp()
+    /*IEnumerator SpeedUp()
     {
         yield return new WaitForSeconds(10f);
         playerController.speed /= 2;
@@ -252,5 +255,5 @@ public class DiceProjectile : MonoBehaviour
         yield return new WaitForSeconds(10f);
         playerController.jump *= 2;
         jumpDownStart = false;
-    }
+    }*/
 }

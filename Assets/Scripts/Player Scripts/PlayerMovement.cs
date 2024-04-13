@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
 	public CharacterController controller;
 	public Transform cam;
 	public Animator animator; 
-	//public GameObject UIScript;
 
 	public float speed = 7f;
 	public float turnSmooth = 0.1f;
@@ -21,38 +20,25 @@ public class PlayerMovement : MonoBehaviour
 	public float gravity = -9.81f;
 	float velocity;
 	public TextMeshProUGUI healthText;
+	public GameObject LoseUI;
 
 	//for turning player to face cam
 	public float rotationSpeed = 0f;
 	public bool isAiming;
 
     public PlayerControls playerInput;
-	public Lose lose;
 
 	AudioManager audioManager;
-
-	//public MainMenu mainMenu;
 
     private void Awake()
     {
 		healthText.text = "Health: 3";
-        //Cursor.lockState = CursorLockMode.Locked;
 		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 		
 		playerInput = new PlayerControls();
+		playerInput.Enable();
 		playerInput.Player.Jump.performed += ctx => Jump();
-        //playerInput.Player.Pause.performed += ctx => Pause();
     }
-	
-	private void OnEnable()
-    {
-        playerInput.Enable();
-    }
-
-/*    private void OnDisable()
-    {
-        playerInput.Disable();
-    }*/
 
     private void Jump()
     {
@@ -64,13 +50,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("jump");
         }
     }
-	
-/*	 private void Pause()
-    {
-        Time.timeScale = 0;
-        UIScript.SetActive(true);
-		Cursor.lockState = CursorLockMode.None;
-    }*/
 
     // Update is called once per frame
     void Update()
@@ -106,6 +85,9 @@ public class PlayerMovement : MonoBehaviour
 				animator.SetBool("is_idle", false);
 			}
 		}
+		
+		/* if (Time.timeScale == 0)
+			playerInput.Disable(); */
 
 		velocity += gravity * Time.deltaTime;
 		controller.Move(new Vector3(0, velocity, 0) * Time.deltaTime);
@@ -121,8 +103,7 @@ public class PlayerMovement : MonoBehaviour
 		if (health <= 0)
 		{
 			player.gameObject.SetActive(false);
-			lose.LoseUI.SetActive(true);
-			//lose.UIHud.SetActive(false);
+			LoseUI.SetActive(true);
 			Cursor.lockState = CursorLockMode.None;
 
 			audioManager.playSFX(audioManager.lose);
