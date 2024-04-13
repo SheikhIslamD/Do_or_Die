@@ -4,45 +4,39 @@ using UnityEngine;
 using Unity.UI;
 using TMPro;
 
-public class DoorScript : MonoBehaviour
+public class Door2Script : MonoBehaviour
+
 {
-    private Animator doorAnimator;
+    public Animator doorAnimator;
     public TextMeshProUGUI doorText;
-    private bool button1Activated = false;
-    private bool button2Activated = false;
+
+    private bool Button3Activated = false;
 
     private void Start()
     {
         doorAnimator = GetComponent<Animator>();
     }
 
-    public void Button1Activated()
+    public void NewButton1Activated()
     {
-        button1Activated = true;
+        Button3Activated = true;
         CheckButtonsActivation();
     }
 
-    public void Button2Activated()
-    {
-        button2Activated = true;
-        CheckButtonsActivation();
-    }
 
     private void CheckButtonsActivation()
     {
-        if (button1Activated && button2Activated)
+        if (Button3Activated)
         {
             doorAnimator.SetTrigger("Open");
             doorText.text = "Door Opened!";
-            StartCoroutine(ClearTextAfterDelay(5f));
-
+            StartCoroutine(ClearTextAfterDelay(5f)); // Clear text after 5 seconds
         }
     }
-     private IEnumerator ClearTextAfterDelay(float delay)
+
+    private IEnumerator ClearTextAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         doorText.text = "";
     }
 }
-
- 
