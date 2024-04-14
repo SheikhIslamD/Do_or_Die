@@ -16,8 +16,6 @@ public class WinDoor : MonoBehaviour
 
     void Start()
     {
-        //WinUI.SetActive(true);
-        //UIHud.SetActive(false);
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
@@ -29,7 +27,6 @@ public class WinDoor : MonoBehaviour
             //Time.timeScale = 0;
             GameIsPaused = true;
             UIHud.SetActive(false);
-            Debug.Log("You Win!");
 
             audioManager.playSFX(audioManager.win);
         }

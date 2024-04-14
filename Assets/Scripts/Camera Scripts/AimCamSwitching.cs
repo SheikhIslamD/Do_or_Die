@@ -6,12 +6,13 @@ using Cinemachine;
 
 public class AimCamSwitching : MonoBehaviour
 {
+	//This will be the aim cam's position
     [SerializeField]
     private CinemachineVirtualCamera aimCamera;
     
     public PlayerControls playerInput;
     private InputAction aimAction;
-    private PlayerMovement playerMovement;
+    private PlayerMovement playerMovement; //Used to change rotation speed
 
     private void Awake()
     {
