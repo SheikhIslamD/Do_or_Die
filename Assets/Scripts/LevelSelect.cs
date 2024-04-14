@@ -51,7 +51,12 @@ public class LevelSelect : MonoBehaviour
 
     public void Level1()
     {
+<<<<<<< Updated upstream
         SceneManager.LoadScene("ArtPrototype");
+=======
+        Debug.Log("Level1");
+        SceneManager.LoadScene("PlatformerPrototype");
+>>>>>>> Stashed changes
     }
 
     public void Level2()

@@ -89,9 +89,15 @@ public class PlayerMovement : MonoBehaviour
 		//makin player face where camera is facing when ADS is active
 		Quaternion targetRotation = Quaternion.Euler(0, cam.eulerAngles.y, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-    }
 
-	public void DamageHealth()
+		if (player.CompareTag("Zone"))
+        {
+			DamageHealth();
+			Debug.Log("Dicehead got hit");
+        }
+	}
+
+    public void DamageHealth()
     {
 		health--;
 		if (health <= 0)
