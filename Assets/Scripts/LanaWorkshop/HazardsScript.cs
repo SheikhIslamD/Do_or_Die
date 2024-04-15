@@ -5,7 +5,6 @@ using UnityEngine;
 public class HazardsScript : MonoBehaviour
 {
     public PlayerMovement playerMovement;
-    public ParticleSystem damageEffect;
 
 
 void OnTriggerEnter(Collider other)
@@ -16,12 +15,6 @@ void OnTriggerEnter(Collider other)
             }
     
     }
-void OnParticleCollision (GameObject other)
-{
-    if (other.CompareTag("Player"))
-    {
-        playerMovement.DamageHealth();
-    }
-}
+
 
 }

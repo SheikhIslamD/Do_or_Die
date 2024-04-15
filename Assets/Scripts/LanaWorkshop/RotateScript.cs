@@ -6,20 +6,42 @@ public class RotateScript : MonoBehaviour
 {
     public GameObject activator;
     public ActivatorScript script;
-    private bool ventFlipped = false;
     public Animator ventAnimator;
 
-    void start()
+    private bool ventFlipped = false;
+
+   public string triggeredAnimationState = "Flip";
+   public string revertAnimationState = "Closed";
+   public float resetTime = 7f;
+   private float timer = 3f;
+
+
+void Update()
+{
+    if (ventFlipped)
+    {
+        timer += Time.deltaTime;
+
+        if (timer >= resetTime)
+        {
+            ResetAnimation();
+        }
+    }
+}
+
+void start()
 
 {
     script = activator.GetComponent<ActivatorScript>();
     ventAnimator = GetComponent<Animator>();
+
 }
 
 public void ventFlipActivated()
 {
     ventFlipped = true;
     CheckVentActivation();
+    Invoke("ResetAnimation" , 3f);
 }
 
 private void CheckVentActivation()
@@ -31,6 +53,11 @@ private void CheckVentActivation()
     }
 }
 
+private void ResetAnimation()
+{
+    ventAnimator.SetTrigger("Closed"); // Play the triggered animation state from the beginning
+    ventFlipped = false;
+}
 
 
 
