@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HazardsScript : MonoBehaviour
 {
-    public PlayerMovement playerMovement;
+   public PlayerMovement playerMovement;
 
 
 void OnTriggerEnter(Collider other)

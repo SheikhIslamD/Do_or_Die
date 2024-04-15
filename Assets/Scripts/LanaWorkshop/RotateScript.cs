@@ -10,56 +10,25 @@ public class RotateScript : MonoBehaviour
 
     private bool ventFlipped = false;
 
-   public string triggeredAnimationState = "Flip";
-   public string revertAnimationState = "Closed";
-   public float resetTime = 7f;
-   private float timer = 3f;
+    void start()
 
-
-void Update()
-{
-    if (ventFlipped)
     {
-        timer += Time.deltaTime;
+        script = activator.GetComponent<ActivatorScript>();
+        ventAnimator = GetComponent<Animator>();
+    }
 
-        if (timer >= resetTime)
+    public void ventFlipActivated()
+    {
+        ventFlipped = true;
+        CheckVentActivation();
+    }
+
+    private void CheckVentActivation()
+    {
+        if (ventFlipped)
         {
-            ResetAnimation();
+            ventAnimator.SetTrigger("Flip");
         }
     }
 }
 
-void start()
-
-{
-    script = activator.GetComponent<ActivatorScript>();
-    ventAnimator = GetComponent<Animator>();
-
-}
-
-public void ventFlipActivated()
-{
-    ventFlipped = true;
-    CheckVentActivation();
-    Invoke("ResetAnimation" , 3f);
-}
-
-private void CheckVentActivation()
-{
-    if (ventFlipped)
-    {
-        ventAnimator.SetTrigger("Flip");
-        
-    }
-}
-
-private void ResetAnimation()
-{
-    ventAnimator.SetTrigger("Closed"); // Play the triggered animation state from the beginning
-    ventFlipped = false;
-}
-
-
-
- 
-}

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class VentActivator : MonoBehaviour
 {
-    public GameObject platform;
+ 
     public GameObject vent;
     public RotateScript scriptB;
 
 
     void Start()
     {
-        scriptB = platform.GetComponent<RotateScript>();
+        scriptB = vent.GetComponent<RotateScript>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,6 +19,8 @@ public class VentActivator : MonoBehaviour
         if (other.CompareTag("Head"))
         {
             scriptB.ventFlipActivated();
+
+            Destroy(gameObject);
 
         }
     }

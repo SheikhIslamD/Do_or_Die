@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class ActivatorScript : MonoBehaviour
 {
-    private GameObject platform;
+    public GameObject platform;
     public GameObject vent;
     public RotateScript scriptB;
-
 
     private Vector3 targetRotation = new Vector3(0f, 0f, 90f);
 
     void Start()
     {
         scriptB = platform.GetComponent<RotateScript>();
-
- 
     }
 
 
@@ -27,15 +24,14 @@ public class ActivatorScript : MonoBehaviour
 
             Destroy(gameObject);
         }
-     
-
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Head"))
         {
             scriptB.ventFlipActivated();
+
+            Destroy(gameObject);
 
         }
     }
