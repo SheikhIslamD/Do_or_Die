@@ -69,7 +69,7 @@ MonoBehaviour:
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
-    m_InheritPosition: 0
+    m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
@@ -833,7 +833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3576058576409150463}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.85858715, y: 0.866024, z: -3.0000095}
+  m_LocalPosition: {x: 0.90025043, y: 0.866024, z: -3.0000134}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -979,10 +979,6 @@ MonoBehaviour:
   headPoint: {fileID: 3576058578097582911}
   playerDiceyboye: {fileID: 3576058576495542616}
   magicPoofHead: {fileID: 8217325582246454661}
-  jumpUpStart: 0
-  jumpDownStart: 0
-  speedUpStart: 0
-  speedDownStart: 0
   rollNumber: 0
   rollText: {fileID: 0}
   diceModels: []
@@ -1140,7 +1136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f1fdb4dd6603249a3c31112edf22f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3576058576495542612}
   health: 3
   controller: {fileID: 3576058576495542623}
   cam: {fileID: 3576058576991372743}
@@ -1150,11 +1145,10 @@ MonoBehaviour:
   jump: 2
   gravity: -9.81
   healthText: {fileID: 0}
+  EndPanel: {fileID: 0}
   rotationSpeed: 0
   isAiming: 0
-  playerInput: {fileID: 3576058576495542621}
-  lose: {fileID: 0}
-  respawn: {fileID: 0}
+  diceProjectile: {fileID: 4414934223948222586}
 --- !u!114 &3576058576495542621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2479,46 +2473,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8771091787928289351, guid: f8bd5a79374484a4599a6c06bea9dedf, type: 3}
   m_PrefabInstance: {fileID: 4971361335337668669}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2387627380873440098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4414934223948222586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4d2249d7443dcf4f9236a8ad819cf2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dice: {fileID: 4414934223948222586}
-  throwForce: 20
-  diceHeld: 0
-  headPoint: {fileID: 3576058578097582911}
-  playerDiceyboye: {fileID: 3576058576495542616}
-  magicPoofHead: {fileID: 8217325582246454661}
-  jumpUpStart: 0
-  jumpDownStart: 0
-  speedUpStart: 0
-  speedDownStart: 0
-  rollNumber: 0
-  rollText: {fileID: 0}
-  diceModels:
-  - {fileID: 973595775022313221, guid: f8bd5a79374484a4599a6c06bea9dedf, type: 3}
-  - {fileID: -2528106017202695341, guid: 0e02e5130976e104899104a520f70fb7, type: 3}
-  - {fileID: -5642119669406967270, guid: 242a986297c38d04fb55c9ed725d448e, type: 3}
-  - {fileID: -2829652718268387012, guid: 58ac9506e879b7a43bb5abf63387bb45, type: 3}
-  - {fileID: -6934660232906567892, guid: 8542c4047672e884fb690760ccedf56e, type: 3}
-  - {fileID: 973595775022313221, guid: 43a993d656879574ea43522529fe7ac6, type: 3}
-  - {fileID: -2716400624375528983, guid: 8bf0b53749e484f41b594f22953c7f3d, type: 3}
-  diceRenderer: {fileID: 9009145349549246154}
-  diceHeadRenderer: {fileID: 8842824864177066877}
-  hatRenderer: {fileID: 2427113739282628141}
-  animator: {fileID: 1728051627552956670}
-  aimLocator: {fileID: 2957284046202731026}
-  aimColliderLayerMask:
-    serializedVersion: 2
-    m_Bits: 1473
 --- !u!54 &1510418774
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2548,6 +2502,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2387627380873440098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414934223948222586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d2249d7443dcf4f9236a8ad819cf2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dice: {fileID: 4414934223948222586}
+  throwForce: 20
+  diceHeld: 0
+  headPoint: {fileID: 3576058578097582911}
+  playerDiceyboye: {fileID: 3576058576495542616}
+  magicPoofHead: {fileID: 8217325582246454661}
+  rollNumber: 0
+  rollText: {fileID: 0}
+  diceModels:
+  - {fileID: 973595775022313221, guid: f8bd5a79374484a4599a6c06bea9dedf, type: 3}
+  - {fileID: -2528106017202695341, guid: 0e02e5130976e104899104a520f70fb7, type: 3}
+  - {fileID: -5642119669406967270, guid: 242a986297c38d04fb55c9ed725d448e, type: 3}
+  - {fileID: -2829652718268387012, guid: 58ac9506e879b7a43bb5abf63387bb45, type: 3}
+  - {fileID: -6934660232906567892, guid: 8542c4047672e884fb690760ccedf56e, type: 3}
+  - {fileID: 973595775022313221, guid: 43a993d656879574ea43522529fe7ac6, type: 3}
+  - {fileID: -2716400624375528983, guid: 8bf0b53749e484f41b594f22953c7f3d, type: 3}
+  diceRenderer: {fileID: 9009145349549246154}
+  diceHeadRenderer: {fileID: 8842824864177066877}
+  hatRenderer: {fileID: 2427113739282628141}
+  animator: {fileID: 1728051627552956670}
+  aimLocator: {fileID: 2957284046202731026}
+  aimColliderLayerMask:
+    serializedVersion: 2
+    m_Bits: 1473
 --- !u!23 &9009145349549246154 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -5045373824169208073, guid: f8bd5a79374484a4599a6c06bea9dedf, type: 3}

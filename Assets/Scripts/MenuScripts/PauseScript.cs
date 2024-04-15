@@ -12,21 +12,20 @@ public class PauseScript : MonoBehaviour
 	public GameObject[] hands;
     public PlayerControls playerInput;
 	
-	/*  public AudioSource musicSource;
-    public AudioClip buttonAudio;
-    public AudioClip pauseAudio;
-    public AudioClip pauseAmbiance;
-    public AudioClip Ambience;*/
-	
 	public bool GameIsPaused = false;
 	public bool stickMoved; //used to keep cursor slow
 	public int i = 1; //keep track of hands with int
 
+	AudioManager audioManager;
+	public bool gameOver = false;
+
     private void Awake()
     {
+		gameOver = false;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         playerInput = new PlayerControls();
         playerInput.Enable();
-		pausePanel.SetActive(false);
+		Resume();
     }
 	
 	private void Update()
@@ -107,42 +106,44 @@ public class PauseScript : MonoBehaviour
 			//If hand over quit, go to main menu/hub
 			if (hands[0].activeInHierarchy == true)
 				mainMenu();
-			//If hand over resume, resume game
+			//If hand over Resume, Resume game
 			if (hands[1].activeInHierarchy == true)
-				resume();
+				Resume();
 			//If hand over controls, pul up controls
 			if (hands[2].activeInHierarchy == true)
 				control();
 		}
 	}
 
-    private void Pause()
+    public void Pause()
     {
+		if (!gameOver)
+		{
 		if (GameIsPaused)
         {
-            resume();
+            Resume();
         }
-		
-        if (!GameIsPaused)
-        {
-			pausePanel.SetActive(true);
-			Time.timeScale = 0f;
-			GameIsPaused = true;
-			Cursor.lockState = CursorLockMode.None;
+		else
+		{
+            audioManager.playSFX(audioManager.pause);
+            pausePanel.SetActive(true);
+            Time.timeScale = 0f;
+            GameIsPaused = true;
+            Cursor.lockState = CursorLockMode.None;
         }
+		}
 
-        //musicSource.clip = Ambience;
-        //musicSource.Pause();
     }
-    public void resume()
+    public void Resume()
     {
+		if (!gameOver)
+		{
         pausePanel.SetActive(false);
 		Time.timeScale = 1f;
 		GameIsPaused = false;
 		Cursor.lockState = CursorLockMode.Locked;
+		}
 
-        //musicSource.clip = Ambience;
-        //musicSource.Play();
     }    
 
     public void mainMenu()
