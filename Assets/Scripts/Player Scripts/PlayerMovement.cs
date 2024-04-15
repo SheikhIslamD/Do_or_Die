@@ -7,7 +7,6 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-	public GameObject player;
 	public int health = 3;
 	public CharacterController controller;
 	public Transform cam;
@@ -20,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 	public float gravity = -9.81f;
 	float velocity;
 	public TextMeshProUGUI healthText;
-	public GameObject LoseUI;
+	public GameObject EndPanel;
 
 	//for turning player to face cam
 	public float rotationSpeed = 0f;
@@ -29,13 +28,17 @@ public class PlayerMovement : MonoBehaviour
     public PlayerControls playerInput;
 
 	AudioManager audioManager;
+	public GameObject diceProjectile;
+    PauseScript pauseScript;
 
     private void Awake()
     {
 		healthText.text = "Health: 3";
 		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-		
-		playerInput = new PlayerControls();
+        pauseScript = GameObject.Find("UICanvas (working)").GetComponent<PauseScript>();
+
+
+        playerInput = new PlayerControls();
 		playerInput.Enable();
 		playerInput.Player.Jump.performed += ctx => Jump();
     }
@@ -85,9 +88,6 @@ public class PlayerMovement : MonoBehaviour
 				animator.SetBool("is_idle", false);
 			}
 		}
-		
-		/* if (Time.timeScale == 0)
-			playerInput.Disable(); */
 
 		velocity += gravity * Time.deltaTime;
 		controller.Move(new Vector3(0, velocity, 0) * Time.deltaTime);
@@ -102,11 +102,17 @@ public class PlayerMovement : MonoBehaviour
 		health--;
 		if (health <= 0)
 		{
-			player.gameObject.SetActive(false);
-			LoseUI.SetActive(true);
-			Cursor.lockState = CursorLockMode.None;
+            diceProjectile.SetActive(false);
 
-			audioManager.playSFX(audioManager.lose);
+            EndPanel.SetActive(true);
+
+            pauseScript.Pause();
+            pauseScript.gameOver = true;
+
+            audioManager.playSFX(audioManager.lose);
+
+			speed = 0f;
+			jump = 0f;
         }
         else
         {

@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip dicethrow;
     public AudioClip lose;
     public AudioClip win;
+    public AudioClip click;
+    public AudioClip pause;
 
     // Start is called before the first frame update
     void Start()
