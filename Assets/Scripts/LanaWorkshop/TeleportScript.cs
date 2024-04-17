@@ -17,8 +17,7 @@ public class TeleportScript : MonoBehaviour
 
     private void TeleportPlayer(GameObject player)
     {
-        player.transform.position = teleportDestination.position; // Teleport the player to the destination
-        // Optionally, you can add any additional logic here after teleporting the player
+        player.transform.position = teleportDestination.position;
     }
 }
 
