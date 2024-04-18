@@ -30,7 +30,13 @@ public class DiceProjectile : MonoBehaviour
     //public Material[] material;
     //Renderer rend;
     public int rollNumber;
+
+
+    [Header("UI Stuff")]
     public TextMeshProUGUI rollText;
+    public Sprite[] rollSprites;
+    public Image rollImage;
+
     private MeshFilter diceFilter;
     public Mesh[] diceModels;
 
@@ -75,6 +81,9 @@ public class DiceProjectile : MonoBehaviour
 		playerInput.Enable();
 
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+        rollImage = rollImage.GetComponent<Image>();
+        rollImage.sprite = rollSprites[rollNumber];
     }
 
     // Update is called once per frame
@@ -219,6 +228,7 @@ public class DiceProjectile : MonoBehaviour
 
         //rend.sharedMaterial = material[rollNumber];
         diceFilter.mesh = diceModels[rollNumber];
+        rollImage.sprite = rollSprites[rollNumber];
     }
 
     public void diceReset()
@@ -227,6 +237,7 @@ public class DiceProjectile : MonoBehaviour
         //rend.sharedMaterial = material[rollNumber];
         diceFilter.mesh = diceModels[rollNumber];
         rollText.text = "Roll: ";
+        rollImage.sprite = rollSprites[rollNumber];
     }
 
     /*IEnumerator SpeedUp()
