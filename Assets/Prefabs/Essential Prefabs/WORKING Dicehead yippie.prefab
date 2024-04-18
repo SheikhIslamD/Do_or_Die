@@ -25,8 +25,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73685740040966013}
-  m_LocalRotation: {x: 0.13870123, y: 4.5211454e-10, z: -0.0000000032281222, w: 0.99033433}
-  m_LocalPosition: {x: -7.000001, y: 2, z: -0.000020503998}
+  m_LocalRotation: {x: 0.13870123, y: -0, z: -0, w: 0.99033433}
+  m_LocalPosition: {x: 0, y: 2, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -321,8 +321,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160965009951241547}
-  m_LocalRotation: {x: -0.000000007450579, y: 0.67989904, z: -0.19425687, w: 0.70710784}
-  m_LocalPosition: {x: -0.0000038146973, y: -2.4868997e-14, z: -2.1175824e-22}
+  m_LocalRotation: {x: -0.000000014901159, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -832,8 +832,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3576058576409150463}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.90025043, y: 0.866024, z: -3.0000134}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.76503515, y: 0.86602545, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -981,6 +981,8 @@ MonoBehaviour:
   magicPoofHead: {fileID: 8217325582246454661}
   rollNumber: 0
   rollText: {fileID: 0}
+  rollSprites: []
+  rollImage: {fileID: 0}
   diceModels: []
   diceRenderer: {fileID: 3576058576461021134}
   diceHeadRenderer: {fileID: 8842824864177066877}
@@ -1136,19 +1138,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f1fdb4dd6603249a3c31112edf22f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
   controller: {fileID: 3576058576495542623}
   cam: {fileID: 3576058576991372743}
   animator: {fileID: 1728051627552956670}
+  diceProjectile: {fileID: 4414934223948222586}
+  health: 3
   speed: 7
   turnSmooth: 0.1
   jump: 2
   gravity: -9.81
-  healthText: {fileID: 0}
-  EndPanel: {fileID: 0}
   rotationSpeed: 0
-  isAiming: 0
-  diceProjectile: {fileID: 4414934223948222586}
+  healthText: {fileID: 0}
+  healthHearts:
+  - {fileID: 21300000, guid: e85c0f0d522af89469d5e97dfa05ad61, type: 3}
+  - {fileID: 21300000, guid: fd6d73497a676b44b9d1272d600f8990, type: 3}
+  - {fileID: 21300000, guid: f3fe0b2ab1fb3b34f83b1c71225c90fc, type: 3}
+  - {fileID: 21300000, guid: 6cca42f7841edce42bec3e2eafde620c, type: 3}
+  healthHud: {fileID: 0}
 --- !u!114 &3576058576495542621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,8 +1344,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3576058576991372738}
-  m_LocalRotation: {x: 0.09807672, y: 0.70027107, z: -0.098076425, w: 0.70027316}
-  m_LocalPosition: {x: -7.000001, y: 2, z: -0.000020503998}
+  m_LocalRotation: {x: 0.13870123, y: -0, z: -0, w: 0.99033433}
+  m_LocalPosition: {x: 0, y: 2, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1674,7 +1680,7 @@ GameObject:
   - component: {fileID: 3576058578097582910}
   m_Layer: 11
   m_Name: Head Point
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1784,8 +1790,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4533422952780233643}
-  m_LocalRotation: {x: -0.000000014901159, y: 0.6798991, z: -0.19425687, w: 0.70710796}
-  m_LocalPosition: {x: -0.0000076293945, y: -4.9737995e-14, z: -4.2351647e-22}
+  m_LocalRotation: {x: -0.000000029802319, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1862,8 +1868,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5551484526881770589}
-  m_LocalRotation: {x: -0.03286607, y: 0.68819326, z: -0.16244556, w: 0.7063437}
-  m_LocalPosition: {x: -0.0000038146973, y: -2.4868997e-14, z: -2.1175824e-22}
+  m_LocalRotation: {x: -0.046479553, y: 0.000000016746174, z: -0.0000000039528745, w: 0.9989193}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2522,6 +2528,15 @@ MonoBehaviour:
   magicPoofHead: {fileID: 8217325582246454661}
   rollNumber: 0
   rollText: {fileID: 0}
+  rollSprites:
+  - {fileID: 21300000, guid: 9a6ff121afb2fec459c61b3f1a73b541, type: 3}
+  - {fileID: 21300000, guid: afc1611fb3266b8438c412bf80e2553b, type: 3}
+  - {fileID: 21300000, guid: cd26c5668e5759b49a8dd19200d73175, type: 3}
+  - {fileID: 21300000, guid: a1328710585f91f46841df63d8fa50b7, type: 3}
+  - {fileID: 21300000, guid: bc8c08bef274f9e4a8ae2e15a71d1f1c, type: 3}
+  - {fileID: 21300000, guid: 014e226c30a139542ba2ab800dd29891, type: 3}
+  - {fileID: 21300000, guid: 3796c18d4ab3e4143abe0c33d7b70c96, type: 3}
+  rollImage: {fileID: 0}
   diceModels:
   - {fileID: 973595775022313221, guid: f8bd5a79374484a4599a6c06bea9dedf, type: 3}
   - {fileID: -2528106017202695341, guid: 0e02e5130976e104899104a520f70fb7, type: 3}
