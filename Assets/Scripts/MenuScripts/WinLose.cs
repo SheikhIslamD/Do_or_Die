@@ -8,17 +8,18 @@ using TMPro;
 
 public class WinLose : MonoBehaviour
 {
-    public GameObject hud;
-	public TextMeshProUGUI text;
+	TextMeshProUGUI endText;
 	public GameObject[] hands;
     public PlayerControls playerInput;
-	public GameObject player;
+	GameObject player;
 
 	public bool stickMoved; //used to keep cursor slow
 	public int i = 1; //keep track of hands with int
 
     private void Awake()
     {
+		endText = GameObject.Find("EndText").GetComponent<TextMeshProUGUI>();
+        player = GameObject.FindGameObjectWithTag("Player");
         playerInput = new PlayerControls();
         playerInput.Enable();
     }
@@ -29,9 +30,9 @@ public class WinLose : MonoBehaviour
 		playerInput.Menu.Select.performed += ctx => Select();
 		
 		if (player.GetComponent<PlayerMovement>().health > 0)
-			text.text = "You Win!";
+			endText.text = "You Win!";
 		else
-			text.text = "You Lose!";
+			endText.text = "You Lose!";
 	}
 	
 	//Will move cursor around screen based on active objects and player input

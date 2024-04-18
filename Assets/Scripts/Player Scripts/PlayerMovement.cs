@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 	public float gravity = -9.81f;
 	float velocity;
 	public TextMeshProUGUI healthText;
-	public GameObject EndPanel;
+	GameObject endPanel;
 
 	//for turning player to face cam
 	public float rotationSpeed = 0f;
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 		healthText.text = "Health: 3";
 		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         pauseScript = GameObject.Find("UICanvas (working)").GetComponent<PauseScript>();
-
+		endPanel = GameObject.Find("EndPanel");
 
         playerInput = new PlayerControls();
 		playerInput.Enable();
@@ -104,10 +104,9 @@ public class PlayerMovement : MonoBehaviour
 		{
             diceProjectile.SetActive(false);
 
-            EndPanel.SetActive(true);
+            endPanel.SetActive(true);
 
-            pauseScript.Pause();
-            pauseScript.gameOver = true;
+			pauseScript.GameOver();
 
             audioManager.playSFX(audioManager.lose);
 
