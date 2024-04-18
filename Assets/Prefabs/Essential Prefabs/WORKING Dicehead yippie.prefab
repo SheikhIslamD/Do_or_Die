@@ -981,6 +981,8 @@ MonoBehaviour:
   magicPoofHead: {fileID: 8217325582246454661}
   rollNumber: 0
   rollText: {fileID: 0}
+  rollSprites: []
+  rollImage: {fileID: 0}
   diceModels: []
   diceRenderer: {fileID: 3576058576461021134}
   diceHeadRenderer: {fileID: 8842824864177066877}
@@ -1136,19 +1138,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f1fdb4dd6603249a3c31112edf22f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
   controller: {fileID: 3576058576495542623}
   cam: {fileID: 3576058576991372743}
   animator: {fileID: 1728051627552956670}
+  diceProjectile: {fileID: 4414934223948222586}
+  health: 3
   speed: 7
   turnSmooth: 0.1
   jump: 2
   gravity: -9.81
-  healthText: {fileID: 0}
-  EndPanel: {fileID: 0}
   rotationSpeed: 0
-  isAiming: 0
-  diceProjectile: {fileID: 4414934223948222586}
+  healthText: {fileID: 0}
+  healthHearts:
+  - {fileID: 21300000, guid: e85c0f0d522af89469d5e97dfa05ad61, type: 3}
+  - {fileID: 21300000, guid: fd6d73497a676b44b9d1272d600f8990, type: 3}
+  - {fileID: 21300000, guid: f3fe0b2ab1fb3b34f83b1c71225c90fc, type: 3}
+  - {fileID: 21300000, guid: 6cca42f7841edce42bec3e2eafde620c, type: 3}
+  healthHud: {fileID: 0}
 --- !u!114 &3576058576495542621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2522,6 +2528,15 @@ MonoBehaviour:
   magicPoofHead: {fileID: 8217325582246454661}
   rollNumber: 0
   rollText: {fileID: 0}
+  rollSprites:
+  - {fileID: 21300000, guid: 9a6ff121afb2fec459c61b3f1a73b541, type: 3}
+  - {fileID: 21300000, guid: afc1611fb3266b8438c412bf80e2553b, type: 3}
+  - {fileID: 21300000, guid: cd26c5668e5759b49a8dd19200d73175, type: 3}
+  - {fileID: 21300000, guid: a1328710585f91f46841df63d8fa50b7, type: 3}
+  - {fileID: 21300000, guid: bc8c08bef274f9e4a8ae2e15a71d1f1c, type: 3}
+  - {fileID: 21300000, guid: 014e226c30a139542ba2ab800dd29891, type: 3}
+  - {fileID: 21300000, guid: 3796c18d4ab3e4143abe0c33d7b70c96, type: 3}
+  rollImage: {fileID: 0}
   diceModels:
   - {fileID: 973595775022313221, guid: f8bd5a79374484a4599a6c06bea9dedf, type: 3}
   - {fileID: -2528106017202695341, guid: 0e02e5130976e104899104a520f70fb7, type: 3}

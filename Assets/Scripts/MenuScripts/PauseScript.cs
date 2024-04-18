@@ -4,29 +4,38 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System.Runtime.CompilerServices;
+using TMPro;
 
 public class PauseScript : MonoBehaviour
 {
-	GameObject pausePanel;
-	GameObject controlsPanel;
-	public GameObject[] hands;
-	public PlayerControls playerInput;
+    [Header("Should be Assigned")]
+    public GameObject endPanel;
+    public TextMeshProUGUI endText;
+    public GameObject pausePanel;
+	public GameObject controlsPanel;
 
-	public bool GameIsPaused = false;
+    [Header("Visible For Debug")]
+    public bool GameIsPaused = false;
+	public bool gameOver = false;
+
+    GameObject player;
+	AudioManager audioManager;
+
+    [Header("Controls Stuff")]
+    public GameObject[] hands;
+	public PlayerControls playerInput;
 	public bool stickMoved; //used to keep cursor slow
 	public int i = 1; //keep track of hands with int
 
-	AudioManager audioManager;
-	public bool gameOver = false;
 
-	private void Awake()
-	{
-		pausePanel = GameObject.Find("PausePanel");
-		controlsPanel = GameObject.Find("ControlsPanel");
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
 		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         gameOver = false;
+		endPanel.SetActive(false);
 
-		playerInput = new PlayerControls();
+        playerInput = new PlayerControls();
 		playerInput.Enable();
 		Resume();
 	}
@@ -127,8 +136,9 @@ public class PauseScript : MonoBehaviour
 				Resume();
 			}
 			else
-			{
-				audioManager.playSFX(audioManager.pause);
+            {
+                controlsPanel.SetActive(false);
+                audioManager.playSFX(audioManager.pause);
 				pausePanel.SetActive(true);
 				Time.timeScale = 0f;
 				GameIsPaused = true;
@@ -140,8 +150,9 @@ public class PauseScript : MonoBehaviour
 	public void Resume()
 	{
 		if (!gameOver)
-		{
-			pausePanel.SetActive(false);
+        {
+            controlsPanel.SetActive(false);
+            pausePanel.SetActive(false);
 			Time.timeScale = 1f;
 			GameIsPaused = false;
 			Cursor.lockState = CursorLockMode.Locked;
@@ -154,7 +165,12 @@ public class PauseScript : MonoBehaviour
 		Pause();
 		gameOver = true;
 		pausePanel.SetActive(false);
-	}
+        if (player.GetComponent<PlayerMovement>().health > 0)
+            endText.text = "You Win!";
+        else
+            endText.text = "You Lose!";
+        endPanel.SetActive(true);
+    }
 
     public void mainMenu()
     {
