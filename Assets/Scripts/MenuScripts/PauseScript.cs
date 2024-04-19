@@ -4,53 +4,65 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System.Runtime.CompilerServices;
+using TMPro;
 
 public class PauseScript : MonoBehaviour
 {
+    [Header("Should be Assigned")]
+    public GameObject endPanel;
+    public TextMeshProUGUI endText;
     public GameObject pausePanel;
-	public GameObject controls;
-	public GameObject[] hands;
-    public PlayerControls playerInput;
-	
-	public bool GameIsPaused = false;
+	public GameObject controlsPanel;
+
+    [Header("Visible For Debug")]
+    public bool GameIsPaused = false;
+	public bool gameOver = false;
+
+    GameObject player;
+	AudioManager audioManager;
+
+    [Header("Controls Stuff")]
+    public GameObject[] hands;
+	public PlayerControls playerInput;
 	public bool stickMoved; //used to keep cursor slow
 	public int i = 1; //keep track of hands with int
 
-	AudioManager audioManager;
-	public bool gameOver = false;
 
     private void Awake()
     {
-		gameOver = false;
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        player = GameObject.FindGameObjectWithTag("Player");
+		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        gameOver = false;
+		endPanel.SetActive(false);
+
         playerInput = new PlayerControls();
-        playerInput.Enable();
+		playerInput.Enable();
 		Resume();
-    }
-	
+	}
+
 	private void Update()
 	{
 		playerInput.Menu.Move.performed += ctx => Move();
 		playerInput.Menu.Select.performed += ctx => Select();
 		playerInput.Menu.Pause.performed += ctx => Pause();
 	}
-	
+
 	//Will move cursor around screen based on active objects and player input
 	private void Move()
 	{
 		Vector2 moveInput = playerInput.Menu.Move.ReadValue<Vector2>();
-		
+
 		//Stick not moved, resets bool
 		if ((-0.2f < moveInput.x) && (moveInput.x < 0.2f))
 			stickMoved = false;
-		
+
 		//Going to the left
 		if (moveInput.x < -0.2f)
 		{
 			if (!stickMoved)
 			{
 				stickMoved = true;
-				
+
 				//Perform if no hands active
 				if (hands[i].activeInHierarchy == false)
 					hands[i].SetActive(true);
@@ -60,7 +72,7 @@ public class PauseScript : MonoBehaviour
 					if (i > 0)
 					{
 						hands[i].SetActive(false);
-						hands[i-1].SetActive(true);
+						hands[i - 1].SetActive(true);
 						i--;
 					}
 					else
@@ -68,14 +80,14 @@ public class PauseScript : MonoBehaviour
 				}
 			}
 		}
-		
+
 		//Going to the right
 		if (moveInput.x > 0.2f)
 		{
 			if (!stickMoved)
 			{
 				stickMoved = true;
-				
+
 				//Perform if no hands active
 				if (hands[i].activeInHierarchy == false)
 					hands[i].SetActive(true);
@@ -85,7 +97,7 @@ public class PauseScript : MonoBehaviour
 					if (i < 2)
 					{
 						hands[i].SetActive(false);
-						hands[i+1].SetActive(true);
+						hands[i + 1].SetActive(true);
 						i++;
 					}
 					else
@@ -94,13 +106,13 @@ public class PauseScript : MonoBehaviour
 			}
 		}
 	}
-	
+
 	//Will select the option a hand is currently over
 	private void Select()
 	{
-		//If controls menu on, turn it off
-		if (controls.activeInHierarchy == true)
-			back(controls);
+		//If controlsPanel menu on, turn it off
+		if (controlsPanel.activeInHierarchy == true)
+			back(controlsPanel);
 		else
 		{
 			//If hand over quit, go to main menu/hub
@@ -109,52 +121,66 @@ public class PauseScript : MonoBehaviour
 			//If hand over Resume, Resume game
 			if (hands[1].activeInHierarchy == true)
 				Resume();
-			//If hand over controls, pul up controls
+			//If hand over controlsPanel, pul up controlsPanel
 			if (hands[2].activeInHierarchy == true)
 				control();
 		}
 	}
 
-    public void Pause()
-    {
+	public void Pause()
+	{
 		if (!gameOver)
 		{
-		if (GameIsPaused)
+			if (GameIsPaused)
+			{
+				Resume();
+			}
+			else
+            {
+                controlsPanel.SetActive(false);
+                audioManager.playSFX(audioManager.pause);
+				pausePanel.SetActive(true);
+				Time.timeScale = 0f;
+				GameIsPaused = true;
+				Cursor.lockState = CursorLockMode.None;
+			}
+		}
+
+	}
+	public void Resume()
+	{
+		if (!gameOver)
         {
-            Resume();
-        }
-		else
-		{
-            audioManager.playSFX(audioManager.pause);
-            pausePanel.SetActive(true);
-            Time.timeScale = 0f;
-            GameIsPaused = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
+            controlsPanel.SetActive(false);
+            pausePanel.SetActive(false);
+			Time.timeScale = 1f;
+			GameIsPaused = false;
+			Cursor.lockState = CursorLockMode.Locked;
 		}
 
+	}
+
+	public void GameOver()
+	{
+		Pause();
+		gameOver = true;
+		pausePanel.SetActive(false);
+        if (player.GetComponent<PlayerMovement>().health > 0)
+            endText.text = "You Win!";
+        else
+            endText.text = "You Lose!";
+        endPanel.SetActive(true);
     }
-    public void Resume()
-    {
-		if (!gameOver)
-		{
-        pausePanel.SetActive(false);
-		Time.timeScale = 1f;
-		GameIsPaused = false;
-		Cursor.lockState = CursorLockMode.Locked;
-		}
-
-    }    
 
     public void mainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
 	
-	//Will turn on the controls menu
+	//Will turn on the controlsPanel menu
     public void control()
     {
-        controls.SetActive(true);
+        controlsPanel.SetActive(true);
     }
 
     public void back(GameObject ui)
