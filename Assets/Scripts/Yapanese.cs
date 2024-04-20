@@ -11,33 +11,29 @@ public class Yapanese : MonoBehaviour
     {
         //talkText = GameObject.Find("Tutorial_Dialogue").GetComponent<PauseScript>();
     }
-    // This function is called when the collider on this GameObject collides with another collider
+
     private void OnTriggerEnter(Collider other)
     {
-        // Get the tag of the trigger collider
-        string triggerTag = gameObject.tag;
-
-        // Check if the trigger collider has a specific tag
-        if (triggerTag == "HowToJump")
+        //Make sure the player can't launch the dice to activate the other yap sessions
+        if (!other.CompareTag("Head"))
         {
-            // Do something when the trigger collider's tag matches the specified tag
-            Debug.Log("How to jump");
-            Tutorial_Dialogue.SetActive(true);
-        }
+            // Check which yap session was triggered, so we can reuse this script
+            if (gameObject.CompareTag("HowToJump"))
+            {
+                Debug.Log("How To Jump");
+                Tutorial_Dialogue.SetActive(true);
+            }
+            else if (gameObject.CompareTag("Tag2"))
+            {
 
-        if (triggerTag == "HowToDice")
-        {
-            // Do something when the trigger collider's tag matches the specified tag
-            Debug.Log("How to dice");
-            //Stache_Text_Vent.SetActive(false);
-            //Stache_Text_Jump.SetActive(true);
+                Debug.Log("Collision with Tag2");
+            }
+            else if (gameObject.CompareTag("Tag3"))
+            {
 
-        }
+                Debug.Log("Collision with Tag3");
 
-        if (triggerTag == "HowToWall")
-        {
-            // Do something when the trigger collider's tag matches the specified tag
-            Debug.Log("Is this a dead end...?");
+            }
         }
     }
 }
