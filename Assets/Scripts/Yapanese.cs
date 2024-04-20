@@ -34,10 +34,10 @@ public class Yapanese : MonoBehaviour
             }
             else if (gameObject.CompareTag("HowToCard"))
             {
-                Tutorial.SetActive(true);
+                JumpText.SetActive(false);
                 CardText.SetActive(true);
+                Tutorial.SetActive(true);
                 
-
             }
         }
     }
