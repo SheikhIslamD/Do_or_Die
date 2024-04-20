@@ -43,6 +43,15 @@ public class DoorScript : MonoBehaviour
         yield return new WaitForSeconds(delay);
         doorText.text = "";
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Play the "Close" animation
+            doorAnimator.SetTrigger("Close");
+        }
+    }
 }
 
  
