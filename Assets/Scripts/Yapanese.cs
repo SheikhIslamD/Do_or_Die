@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class Yapanese : MonoBehaviour
 {
-    public GameObject Tutorial_Dialogue;
+    public GameObject Tutorial;
+    public GameObject JumpText;
+    public GameObject CardText;
     private void Awake()
     {
         //talkText = GameObject.Find("Tutorial_Dialogue").GetComponent<PauseScript>();
@@ -18,20 +20,23 @@ public class Yapanese : MonoBehaviour
         if (!other.CompareTag("Head"))
         {
             // Check which yap session was triggered, so we can reuse this script
-            if (gameObject.CompareTag("HowToJump"))
+            if (gameObject.CompareTag("EndTutorialText"))   //keep this first, it is used most often (optimization)
             {
-                Debug.Log("How To Jump");
-                Tutorial_Dialogue.SetActive(true);
+                CardText.SetActive(false);
+                JumpText.SetActive(false);
+                Tutorial.SetActive(false);
             }
-            else if (gameObject.CompareTag("Tag2"))
+            else if (gameObject.CompareTag("HowToJump"))
             {
-
-                Debug.Log("Collision with Tag2");
+                Tutorial.SetActive(true);
+                CardText.SetActive(false);
+                JumpText.SetActive(true);
             }
-            else if (gameObject.CompareTag("Tag3"))
+            else if (gameObject.CompareTag("HowToCard"))
             {
-
-                Debug.Log("Collision with Tag3");
+                Tutorial.SetActive(true);
+                CardText.SetActive(true);
+                
 
             }
         }
