@@ -23,8 +23,7 @@ public class WinDoor : MonoBehaviour
         {
             endPanel.SetActive(true);
 
-            pauseScript.Pause();
-            pauseScript.gameOver = true;
+            pauseScript.GameOver();
 
             audioManager.playSFX(audioManager.win);
 
