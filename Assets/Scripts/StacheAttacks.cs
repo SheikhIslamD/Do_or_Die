@@ -37,7 +37,7 @@ public class StacheAttacks : MonoBehaviour
     public void SpawnAndShoot()
     {
         //play animation
-        Debug.Log("Stache shot a card!");
+        Debug.Log("Stache shot a projectile!");
         //Instantiate a new projectile at the shootPoint position and rotation
         GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
 
