@@ -17,6 +17,7 @@ public class Button1Script : MonoBehaviour
             doorScript.Button1Activated();
 
             StartCoroutine(HideButtonText(button1Text));
+
         }
     }
 

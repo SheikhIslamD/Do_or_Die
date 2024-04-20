@@ -12,6 +12,8 @@ public class WallActivator : MonoBehaviour
     if (collision.gameObject.CompareTag("Head"))
     {
         wallBehaviorScript.DestroyGameObject();
+
+        Destroy(gameObject);
     }
  }
 }
