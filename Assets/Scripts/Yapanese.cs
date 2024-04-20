@@ -18,7 +18,7 @@ public class Yapanese : MonoBehaviour
         string triggerTag = gameObject.tag;
 
         // Check if the trigger collider has a specific tag
-        if (triggerTag == "HowToVent")
+        if (triggerTag == "HowToJump")
         {
             // Do something when the trigger collider's tag matches the specified tag
             Debug.Log("How to jump");
