@@ -7,9 +7,6 @@ public class StacheAttacks : MonoBehaviour
     public GameObject projectilePrefab; //projectile
     public Transform shootPoint; //point the projectile is spawned at
     public float speed = 10f; //how fast the projectile moves
-    private float leftBounds = 50;
-    private float rightBounds = -50;
-    PlayerMovement playerMovement;
 
     //Whatever prefab you are using for the projectile must also have this script assigned. The spawn function doesn't need to be assigned
 
