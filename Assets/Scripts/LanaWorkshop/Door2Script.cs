@@ -7,6 +7,7 @@ using TMPro;
 public class Door2Script : MonoBehaviour
 
 {
+    public int pressed = 0;
     public Animator doorAnimator;
     public TextMeshProUGUI doorText;
 
