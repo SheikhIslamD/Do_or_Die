@@ -10,17 +10,32 @@ public class RotateScript : MonoBehaviour
 
     private bool ventFlipped = false;
 
-    void start()
+    AudioManager audioManager;
 
-    {
+void Start()
+{
+    if (activator != null)
         script = activator.GetComponent<ActivatorScript>();
-        ventAnimator = GetComponent<Animator>();
+
+    ventAnimator = GetComponent<Animator>();
+
+    GameObject audioObject = GameObject.FindGameObjectWithTag("Audio");
+    if (audioObject != null)
+    {
+        audioManager = audioObject.GetComponent<AudioManager>();
+        Debug.Log("AudioManager found and assigned successfully.");
     }
+    else
+    {
+        Debug.LogError("AudioManager not found!");
+    }
+}
 
     public void ventFlipActivated()
     {
         ventFlipped = true;
         CheckVentActivation();
+
     }
 
     private void CheckVentActivation()
@@ -28,6 +43,9 @@ public class RotateScript : MonoBehaviour
         if (ventFlipped)
         {
             ventAnimator.SetTrigger("Flip");
+
+            audioManager.playSFX(audioManager.ventOpen);
+
         }
     }
 }

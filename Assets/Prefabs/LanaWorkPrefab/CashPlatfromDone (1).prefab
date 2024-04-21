@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 2154628036775781746}
   - component: {fileID: 2154628036775781747}
   - component: {fileID: 2154628036775781744}
-  - component: {fileID: 2154628036775781745}
   - component: {fileID: 2154628036775781758}
   - component: {fileID: 2154628036775781759}
   m_Layer: 0
@@ -120,20 +119,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2154628036775781745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2154628036775781756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 346097192c0bf434e8c68accdde6aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  platform: {fileID: 0}
-  scriptB: {fileID: 0}
 --- !u!65 &2154628036775781758
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 2154628037458135142}
+  vent: {fileID: 0}
   scriptB: {fileID: 0}
 --- !u!1 &2154628037373474328
 GameObject:
@@ -5108,6 +5094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activator: {fileID: 2154628036775781756}
   script: {fileID: 0}
+  ventAnimator: {fileID: 0}
 --- !u!1001 &7768988670079942568
 PrefabInstance:
   m_ObjectHideFlags: 0

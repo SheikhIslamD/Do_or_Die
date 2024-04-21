@@ -1,32 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Yapanese : MonoBehaviour
 {
-    // This function is called when the collider on this GameObject collides with another collider
+    public GameObject Tutorial;
+    public GameObject JumpText;
+    public GameObject CardText;
+
     private void OnTriggerEnter(Collider other)
     {
-        // Get the tag of the trigger collider
-        string triggerTag = gameObject.tag;
-
-        // Check if the trigger collider has a specific tag
-        if (triggerTag == "HowToJump")
+        //Make sure the player can't launch the dice to activate the other yap sessions
+        if (!other.CompareTag("Head"))
         {
-            // Do something when the trigger collider's tag matches the specified tag
-            Debug.Log("How to jump");
-        }
-
-        if (triggerTag == "HowToDice")
-        {
-            // Do something when the trigger collider's tag matches the specified tag
-            Debug.Log("How to dice");
-        }
-
-        if (triggerTag == "HowToWall")
-        {
-            // Do something when the trigger collider's tag matches the specified tag
-            Debug.Log("Is this a dead end...?");
+            // Check which yap session was triggered, so we can reuse this script
+            if (gameObject.CompareTag("EndTutorialText"))   //keep this first, it is used most often (optimization)
+            {
+                CardText.SetActive(false);
+                JumpText.SetActive(false);
+                Tutorial.SetActive(false);
+            }
+            else if (gameObject.CompareTag("HowToJump"))
+            {
+                Tutorial.SetActive(true);
+                CardText.SetActive(false);
+                JumpText.SetActive(true);
+            }
+            else if (gameObject.CompareTag("HowToCard"))
+            {
+                JumpText.SetActive(false);
+                CardText.SetActive(true);
+                Tutorial.SetActive(true);
+                
+            }
         }
     }
 }

@@ -11,9 +11,14 @@ public class DoorScript : MonoBehaviour
     private bool button1Activated = false;
     private bool button2Activated = false;
 
+    AudioManager audioManager;
+
+
     private void Start()
     {
         doorAnimator = GetComponent<Animator>();
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void Button1Activated()
@@ -36,12 +41,26 @@ public class DoorScript : MonoBehaviour
             doorText.text = "Door Opened!";
             StartCoroutine(ClearTextAfterDelay(5f));
 
+            audioManager.playSFX(audioManager.doorOpen);
+
         }
     }
      private IEnumerator ClearTextAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         doorText.text = "";
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Play the "Close" animation
+            doorAnimator.SetTrigger("Close");
+
+            audioManager.playSFX(audioManager.doorClose);
+
+        }
     }
 }
 
