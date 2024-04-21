@@ -6,9 +6,16 @@ public class StacheAttacks : MonoBehaviour
 {
     public GameObject projectilePrefab; //projectile
     public Transform shootPoint; //point the projectile is spawned at
-    public float speed = 10f; //how fast the projectile moves
+    public float speed; //how fast the projectile moves
+    AudioManager audioManager;
 
     //Whatever prefab you are using for the projectile must also have this script assigned. The spawn function doesn't need to be assigned
+
+
+    private void Start()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     //trigger for the activator
     private void OnTriggerEnter(Collider other)
@@ -28,13 +35,18 @@ public class StacheAttacks : MonoBehaviour
             collision.gameObject.GetComponent<PlayerMovement>().DamageHealth();
             Debug.Log("Projectile hit player");
         }
-		
+
 		if (collision.gameObject.CompareTag("Boss") && this.gameObject.CompareTag("Boss Coin")) // Check if the collided object is the boss
         {
 			Destroy(this.gameObject);
             // Call the DamageHealth method in the script with boss
             collision.gameObject.GetComponent<StacheHealth>().DamageHealth();
             Debug.Log("Projectile hit Stache");
+        }
+
+        if (collision.gameObject.CompareTag("Untagged"))
+        {
+            audioManager.playSFX(audioManager.coinDrop);
         }
 		
         //place particle effect here
@@ -48,6 +60,16 @@ public class StacheAttacks : MonoBehaviour
 		
         //Instantiate a new projectile at the shootPoint position and rotation
         GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+
+        //Cards are slower than coins so check the speed and play the according sound when thrown
+        if (speed > 8)
+        {
+            audioManager.playSFX(audioManager.coinToss);
+        }
+        else
+        {
+            audioManager.playSFX(audioManager.cardThrow);
+        }
 
         //Get the rigidbody component of the projectile
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
