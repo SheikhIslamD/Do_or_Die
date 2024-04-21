@@ -15,7 +15,6 @@ public class StacheAttacks : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Dicehead is on the floor");
             SpawnAndShoot();
         }
     }
@@ -27,8 +26,17 @@ public class StacheAttacks : MonoBehaviour
         {
             // Call the DamageHealth method in the PlayerMovement script attached to the player
             collision.gameObject.GetComponent<PlayerMovement>().DamageHealth();
-            Debug.Log("Card hit player");
+            Debug.Log("Projectile hit player");
         }
+		
+		if (collision.gameObject.CompareTag("Boss") && this.gameObject.CompareTag("Boss Coin")) // Check if the collided object is the boss
+        {
+			Destroy(this.gameObject);
+            // Call the DamageHealth method in the script with boss
+            collision.gameObject.GetComponent<StacheHealth>().DamageHealth();
+            Debug.Log("Projectile hit Stache");
+        }
+		
         //place particle effect here
         Destroy(gameObject, 10); 
     }
@@ -37,7 +45,7 @@ public class StacheAttacks : MonoBehaviour
     public void SpawnAndShoot()
     {
         //play animation
-        Debug.Log("Stache shot a projectile!");
+		
         //Instantiate a new projectile at the shootPoint position and rotation
         GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
 
