@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class LockOn : MonoBehaviour
 {
+    
+    //Placeholder copy of Lock-On that I will adjust to the new setup yesyes
+    
     [Header("Objects")]
     [SerializeField] private Camera mainCamera; // main camera object.
     [SerializeField] private CinemachineFreeLook cinemachineFreeLook; //cinemachine free lock camera object.
@@ -121,4 +124,3 @@ public class LockOn : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, maxDistance);
     }
 }
-*/
