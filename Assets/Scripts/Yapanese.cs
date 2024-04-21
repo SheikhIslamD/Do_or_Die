@@ -9,6 +9,7 @@ public class Yapanese : MonoBehaviour
     public GameObject Tutorial;
     public GameObject JumpText;
     public GameObject CardText;
+    public GameObject WallText;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +19,7 @@ public class Yapanese : MonoBehaviour
             // Check which yap session was triggered, so we can reuse this script
             if (gameObject.CompareTag("EndTutorialText"))   //keep this first, it is used most often (optimization)
             {
+                WallText.SetActive(false);
                 CardText.SetActive(false);
                 JumpText.SetActive(false);
                 Tutorial.SetActive(false);
@@ -25,6 +27,7 @@ public class Yapanese : MonoBehaviour
             else if (gameObject.CompareTag("HowToJump"))
             {
                 Tutorial.SetActive(true);
+                WallText.SetActive(false);
                 CardText.SetActive(false);
                 JumpText.SetActive(true);
             }
@@ -32,8 +35,16 @@ public class Yapanese : MonoBehaviour
             {
                 JumpText.SetActive(false);
                 CardText.SetActive(true);
+                WallText.SetActive(false);
                 Tutorial.SetActive(true);
                 
+            }
+            else if (gameObject.CompareTag("HowToWall"))
+            {
+                JumpText.SetActive(false);
+                CardText.SetActive(false);
+                WallText.SetActive(true);
+                Tutorial.SetActive(true);
             }
         }
     }
