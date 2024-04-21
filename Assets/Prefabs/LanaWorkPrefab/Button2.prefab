@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6624435025634962303}
   - component: {fileID: 6624435025634962302}
   - component: {fileID: 6624435025634962241}
+  - component: {fileID: 2104814301394843409}
   - component: {fileID: 1218817940980994044}
   m_Layer: 0
   m_Name: Button2
@@ -100,7 +101,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &1218817940980994044
+--- !u!114 &2104814301394843409
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,6 +109,23 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6624435025634962240}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3606276f55ca94893fa0d2ba5a0220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button1Text: {fileID: 0}
+  button2Text: {fileID: 0}
+  CounterText: {fileID: 0}
+  doorScript: {fileID: 0}
+  doorScript2: {fileID: 0}
+--- !u!114 &1218817940980994044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6624435025634962240}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adfe1650e717a54409e6f3c3ff773596, type: 3}
   m_Name: 
