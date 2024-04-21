@@ -34,7 +34,7 @@ public class Buttons : MonoBehaviour
                 audioManager.playSFX(audioManager.buttonPressed);
                 CounterText.text = "Buttons Activated: " + doorScript2.pressed + "/3";
                 StartCoroutine(HideButtonText(button1Text));
-                Destroy(gameObject);
+                Destroy(GetComponent<CapsuleCollider>());
             }
             else if (gameObject.CompareTag("Button2"))
             {
@@ -45,7 +45,7 @@ public class Buttons : MonoBehaviour
                 audioManager.playSFX(audioManager.buttonPressed);
                 CounterText.text = "Buttons Activated: " + doorScript2.pressed + "/3";
                 StartCoroutine(HideButtonText(button1Text));
-                Destroy(gameObject);
+                Destroy(GetComponent<CapsuleCollider>());
             }
             else if (gameObject.CompareTag("Button3"))
             {
@@ -56,7 +56,7 @@ public class Buttons : MonoBehaviour
                 audioManager.playSFX(audioManager.buttonPressed);
                 CounterText.text = "Buttons Activated: " + doorScript2.pressed + "/3";
                 StartCoroutine(HideButtonText(button1Text));
-                Destroy(gameObject);
+                Destroy(GetComponent<CapsuleCollider>());
             }
             
 
@@ -68,6 +68,7 @@ public class Buttons : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         text.text = "";
+        Destroy(gameObject);
     }
 }
 
