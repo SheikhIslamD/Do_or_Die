@@ -9,10 +9,6 @@ public class Yapanese : MonoBehaviour
     public GameObject Tutorial;
     public GameObject JumpText;
     public GameObject CardText;
-    private void Awake()
-    {
-        //talkText = GameObject.Find("Tutorial_Dialogue").GetComponent<PauseScript>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {

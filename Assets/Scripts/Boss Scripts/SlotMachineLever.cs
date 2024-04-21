@@ -5,6 +5,8 @@ using UnityEngine;
 public class SlotMachineLever : MonoBehaviour
 {
     private Animation anim;
+	public GameObject coin; //spawn coins
+	public Transform dropPoint; //drop point above Stache's head
 
     private void Start()
     {
@@ -15,8 +17,15 @@ public class SlotMachineLever : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Head"))
         {
+			InstantiateCoin();
             anim.Play("SlotMachineLeverHit");
             Destroy(this);
         }
+    }
+	
+	void InstantiateCoin()
+    {
+		GameObject dropper = Instantiate(coin, dropPoint.position, Quaternion.identity);
+		Rigidbody rb = dropper.GetComponent<Rigidbody>();
     }
 }
