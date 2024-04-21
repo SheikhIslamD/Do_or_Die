@@ -70,10 +70,10 @@ public class DiceProjectile : MonoBehaviour
         boxcollider.isTrigger = true;
 
         //rolling number material default assignments
-        rollNumber = 0;
         //rend = GetComponent<Renderer>();
         //rend.enabled = true;
         //rend.sharedMaterial = material[rollNumber];
+        rollNumber = 0;
         diceFilter = GetComponent<MeshFilter>();
         diceFilter.mesh = diceModels[rollNumber];
 		

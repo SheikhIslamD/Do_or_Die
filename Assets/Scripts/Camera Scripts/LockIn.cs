@@ -3,42 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
-public class LockOn : MonoBehaviour
+public class LockIn : MonoBehaviour
 {
-    
+
     //Placeholder copy of Lock-On that I will adjust to the new setup yesyes
-    
+
+    public PlayerControls playerInput;
+
     [Header("Objects")]
-    [SerializeField] private Camera mainCamera; // main camera object.
-    [SerializeField] private CinemachineFreeLook cinemachineFreeLook; //cinemachine free lock camera object.
+    public Camera mainCamera; // main camera object.
+    public CinemachineTargetGroup targetGroup;
+    public CinemachineVirtualCamera lockOnCamera;
+    //[SerializeField] private CinemachineFreeLook cinemachineFreeLook; //cinemachine free lock camera object.
 
     [Header("UI")]
-    [SerializeField] private Image aimIcon;  // ui image of aim icon 
+    public GameObject lockOnIcon;  // ui image of aim icon 
 
     [Header("Settings")]
-    [SerializeField] private string TargetTag; //Assign the target tag
+/*    [SerializeField] private string TargetTag; //Assign the target tag
     [SerializeField] private KeyCode _Input; //Assign the lock on input
     [SerializeField] private Vector2 targetLockOffset; //Tilts the camera when locked on so the player can see themselves and the target
-    [SerializeField] private float minDistance; // minimum distance to stop rotation if you get close to target
-    [SerializeField] private float maxDistance;
+    [SerializeField] private float minDistance; // minimum distance to stop rotation if you get close to target */
+    [SerializeField] private float maxDistance = 20;
 
-    public bool isTargeting;
-    private float maxAngle;
+    public bool isTargeting = false;
+    private float maxAngle = 135f; // always 90 to target enemies in front of camera.
     private Transform currentTarget;
-    private float mouseX;
-    private float mouseY;
+/*    private float mouseX;
+    private float mouseY;*/
 
     void Start()
     {
-        maxAngle = 90f; // always 90 to target enemies in front of camera.
-        cinemachineFreeLook.m_XAxis.m_InputAxisName = "";
-        cinemachineFreeLook.m_YAxis.m_InputAxisName = "";
+        playerInput = new PlayerControls();
+        playerInput.Enable();
+
+        lockOnIcon = GameObject.Find("LockOn Icon");
+        lockOnIcon.gameObject.SetActive(false);
+        isTargeting = false;
+
+        //targetGroup = targetGroup.GetComponent<CinemachineTargetGroup>();
+
+        /*        maxAngle = 90f; 
+                cinemachineFreeLook.m_XAxis.m_InputAxisName = "";
+                cinemachineFreeLook.m_YAxis.m_InputAxisName = "";*/
     }
 
     void Update()
     {
-        if (!isTargeting)
+        playerInput.Player.LockOn.performed += ctx => AssignTarget();
+
+/*        if (!isTargeting)
         {
             mouseX = Input.GetAxis("Mouse X");
             mouseY = Input.GetAxis("Mouse Y");
@@ -46,55 +62,68 @@ public class LockOn : MonoBehaviour
         else
         {
             NewInputTarget(currentTarget);
-        }
+        }*/
 
-        if (aimIcon)
-            aimIcon.gameObject.SetActive(isTargeting);
-
-        cinemachineFreeLook.m_XAxis.m_InputAxisValue = mouseX;
-        cinemachineFreeLook.m_YAxis.m_InputAxisValue = mouseY;
-
-        if (Input.GetKeyDown(_Input))
+        //if (lockOnIcon)
+        if (isTargeting)
         {
-            AssignTarget();
+        lockOnIcon.gameObject.SetActive(true);
+        lockOnIcon.transform.position = mainCamera.WorldToScreenPoint(currentTarget.position);
         }
+
+        /*        cinemachineFreeLook.m_XAxis.m_InputAxisValue = mouseX;
+                cinemachineFreeLook.m_YAxis.m_InputAxisValue = mouseY;
+
+                if (Input.GetKeyDown(_Input))
+                {
+                    AssignTarget();
+                }*/
     }
 
     private void AssignTarget()
     {
         if (isTargeting)
         {
-            isTargeting = false;
+            lockOnCamera.Priority -= 10;
+            targetGroup.RemoveMember(currentTarget);
             currentTarget = null;
+            isTargeting = false;
+            lockOnIcon.gameObject.SetActive(false);
+            //Debug.Log("lock off");
             return;
         }
 
-        if (ClosestTarget())
+        if (!isTargeting && ClosestTarget())
         {
+            lockOnCamera.Priority += 10;
             currentTarget = ClosestTarget().transform;
+            targetGroup.AddMember(currentTarget, 2, 5);
             isTargeting = true;
+            //Debug.Log("lock on");
         }
+
+        //Debug.Log("lock on pressed");
     }
 
-    private void NewInputTarget(Transform target) // sets new input value.
+/*    private void NewInputTarget(Transform target) // sets new input value.
     {
         if (!currentTarget) return;
 
         Vector3 viewPos = mainCamera.WorldToViewportPoint(target.position);
 
-        if (aimIcon)
-            aimIcon.transform.position = mainCamera.WorldToScreenPoint(target.position);
+        if (lockOnIcon)
+            lockOnIcon.transform.position = mainCamera.WorldToScreenPoint(target.position);
 
         if ((target.position - transform.position).magnitude < minDistance) return;
         mouseX = (viewPos.x - 0.5f + targetLockOffset.x) * 3f;              // you can change the last value to make it faster or slower
         mouseY = (viewPos.y - 0.5f + targetLockOffset.y) * 3f;              // don't use delta time here.
-    }
+    }*/
 
 
     private GameObject ClosestTarget() // Gets Closest Object with target tag 
     {
         GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag(TargetTag);
+        gos = GameObject.FindGameObjectsWithTag("Target");
         GameObject closest = null;
         float distance = maxDistance;
         float currAngle = maxAngle;
