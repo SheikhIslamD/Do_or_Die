@@ -12,8 +12,9 @@ public class LevelSelect : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("LevelSelect");
+            SceneManager.LoadScene("MenuSelect");
         }
     }
+
    
 }

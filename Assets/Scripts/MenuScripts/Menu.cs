@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+
     public void Platformer()
     {
         SceneManager.LoadScene("PlatformerPrototype");

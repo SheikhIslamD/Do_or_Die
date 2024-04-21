@@ -121,7 +121,7 @@ public class MainMenu : MonoBehaviour
 	//Will load the hub world
     public void play()
     {
-        SceneManager.LoadScene("MenuSelect");
+        SceneManager.LoadScene("Hub");
     }
 
 	//Will turn on the credits menu
