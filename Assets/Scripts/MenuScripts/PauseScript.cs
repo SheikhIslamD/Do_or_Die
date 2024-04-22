@@ -13,8 +13,8 @@ public class PauseScript : MonoBehaviour
     public TextMeshProUGUI endText;
     public GameObject pausePanel;
 	public GameObject controlsPanel;
-	public GameObject victoryPanel;
-	public TextMeshProUGUI scoreDisplay;
+	//public GameObject victoryPanel;
+	//public TextMeshProUGUI scoreDisplay;
 
     [Header("Visible For Debug")]
     public bool GameIsPaused = false;
@@ -22,7 +22,7 @@ public class PauseScript : MonoBehaviour
 
     GameObject player;
 	AudioManager audioManager;
-	[SerializeField] ScoreTracker scoreTracker;
+	//[SerializeField] ScoreTracker scoreTracker;
 
     [Header("Controls Stuff")]
     public GameObject[] hands;
@@ -42,11 +42,11 @@ public class PauseScript : MonoBehaviour
 		playerInput.Enable();
 		Resume();
 
-        scoreTracker = GameObject.Find("ScoreManager").GetComponent<ScoreTracker>();
+/*        scoreTracker = GameObject.Find("ScoreManager").GetComponent<ScoreTracker>();
 		scoreDisplay = GameObject.Find("Score Display").GetComponent<TextMeshProUGUI>();
 		scoreDisplay.text = "Levels\r\n" + scoreTracker.scoreCount + " of 4";
 
-		victoryPanel.SetActive(false);
+		victoryPanel.SetActive(false);*/
 		pausePanel.SetActive(false);
 		controlsPanel.SetActive(false);
 	}
@@ -178,7 +178,7 @@ public class PauseScript : MonoBehaviour
 		pausePanel.SetActive(false);
         if (player.GetComponent<PlayerMovement>().health > 0)
 		{
-			scoreTracker.scoreUp();
+			//scoreTracker.scoreUp();
 			endText.text = "Level Complete!";
 		}
 		else
@@ -193,8 +193,9 @@ public class PauseScript : MonoBehaviour
         Pause();
         gameOver = true;
         pausePanel.SetActive(false);
-		endPanel.SetActive(false);
-        victoryPanel.SetActive(true);
+		endPanel.SetActive(true);
+        endText.text = "Victory!";
+        //victoryPanel.SetActive(true);
     }
 
     public void mainMenu()
