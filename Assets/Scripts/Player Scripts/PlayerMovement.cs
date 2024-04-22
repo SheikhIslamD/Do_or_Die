@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 	public GameObject diceProjectile;
 
     [Header("Numbers Stuff")]
-    public int health = 3;
+    public int health = 6;
 	public float speed = 7f;
 	public float turnSmooth = 0.1f;
 	public float jump = 2f;
@@ -37,9 +37,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+		health = 6;
 		healthHud = healthHud.GetComponent<Image>();
 		healthHud.sprite = healthHearts[health];
-		healthText.text = "Health: 3";
+		healthText.text = "Health: 6";
 		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         pauseScript = GameObject.Find("UICanvas (working)").GetComponent<PauseScript>();
 

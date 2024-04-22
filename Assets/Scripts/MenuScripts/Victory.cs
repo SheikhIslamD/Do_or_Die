@@ -6,12 +6,13 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 
-public class WinLose : MonoBehaviour
+public class Victory : MonoBehaviour
 {
 	public GameObject[] hands;
 	public PlayerControls playerInput;
+    public GameObject creditsPanel;
 
-	public bool stickMoved; //used to keep cursor slow
+    public bool stickMoved; //used to keep cursor slow
 	public int i = 1; //keep track of hands with int
 
     private void Awake()
@@ -90,34 +91,37 @@ public class WinLose : MonoBehaviour
 	//Will select the option a hand is currently over
 	private void Select()
 	{
-		//If hand over replay, replay level
-		if (hands[0].activeInHierarchy == true)
-			replay();
-		//If hand over main menu, go to title
-		if (hands[1].activeInHierarchy == true)
-			mainMenu();
-		//If hand over quit, quit game.
-		if (hands[2].activeInHierarchy == true)
-			hubLevel();
+		//If controlsPanel menu on, turn it off
+		if (creditsPanel.activeInHierarchy == true)
+			back(creditsPanel);
+		else
+		{
+			//If hand over quit, go to main menu/hub
+			if (hands[0].activeInHierarchy == true)
+				quitGame();
+			//If hand over Resume, Resume game
+			if (hands[1].activeInHierarchy == true)
+				mainMenu();
+			//If hand over controlsPanel, pul up controlsPanel
+			if (hands[2].activeInHierarchy == true)
+				credits();
+		}
 	}
 
-	public void replay()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void mainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-	
 	public void quitGame()
     {
         Application.Quit();
     }
-
-    public void hubLevel()
+    public void mainMenu()
     {
-        SceneManager.LoadScene("Hub");
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void credits()
+    {
+        creditsPanel.SetActive(true);
+    }
+    public void back(GameObject ui)
+    {
+        ui.SetActive(false);
     }
 }
