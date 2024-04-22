@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5095143352525218386}
   shootPoint: {fileID: 0}
-  speed: 8
+  speed: 7
 --- !u!54 &-7052314153047772860
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,9 +114,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5095143352525218386}
   serializedVersion: 2
-  m_Mass: 0.1
+  m_Mass: 0.07
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.03
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

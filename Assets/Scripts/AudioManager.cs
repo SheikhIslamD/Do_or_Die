@@ -18,6 +18,14 @@ public class AudioManager : MonoBehaviour
     public AudioClip win;
     public AudioClip click;
     public AudioClip pause;
+    public AudioClip doorClose;
+    public AudioClip doorOpen;
+    public AudioClip ventOpen;
+    public AudioClip wallDestroyed;
+    public AudioClip buttonPressed;
+    public AudioClip coinToss;
+    public AudioClip cardThrow;
+    public AudioClip coinDrop;
 
     // Start is called before the first frame update
     void Start()

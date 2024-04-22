@@ -7,36 +7,41 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-	public int health = 3;
+    [Header("Should be Assigned")]
 	public CharacterController controller;
 	public Transform cam;
-	public Animator animator; 
+	public Animator animator;
+    public PlayerControls playerInput;
+	public GameObject diceProjectile;
 
+    [Header("Numbers Stuff")]
+    public int health = 3;
 	public float speed = 7f;
 	public float turnSmooth = 0.1f;
-	float turnVelocity;
 	public float jump = 2f;
 	public float gravity = -9.81f;
-	float velocity;
-	public TextMeshProUGUI healthText;
-	GameObject endPanel;
-
 	//for turning player to face cam
 	public float rotationSpeed = 0f;
-	public bool isAiming;
 
-    public PlayerControls playerInput;
+
+	float turnVelocity;
+	float velocity;
 
 	AudioManager audioManager;
-	public GameObject diceProjectile;
     PauseScript pauseScript;
+
+    [Header("UI Stuff")]
+    public TextMeshProUGUI healthText;
+    public Sprite[] healthHearts;
+	public Image healthHud;
 
     private void Awake()
     {
+		healthHud = healthHud.GetComponent<Image>();
+		healthHud.sprite = healthHearts[health];
 		healthText.text = "Health: 3";
 		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         pauseScript = GameObject.Find("UICanvas (working)").GetComponent<PauseScript>();
-		endPanel = GameObject.Find("EndPanel");
 
         playerInput = new PlayerControls();
 		playerInput.Enable();
@@ -104,8 +109,6 @@ public class PlayerMovement : MonoBehaviour
 		{
             diceProjectile.SetActive(false);
 
-            endPanel.SetActive(true);
-
 			pauseScript.GameOver();
 
             audioManager.playSFX(audioManager.lose);
@@ -117,7 +120,8 @@ public class PlayerMovement : MonoBehaviour
         {
 			healthText.text = "Health: " + health;
 			audioManager.playSFX(audioManager.damage);
-		}
+            healthHud.sprite = healthHearts[health];
+        }
 	}
 	
 	public void IncreaseHealth()

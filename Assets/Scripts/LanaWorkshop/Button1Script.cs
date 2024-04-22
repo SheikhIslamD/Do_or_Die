@@ -8,7 +8,14 @@ public class Button1Script : MonoBehaviour
 {
     public TextMeshProUGUI button1Text;
     public DoorScript doorScript;
+    AudioManager audioManager;
 
+private void Start()
+    {
+       
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -16,7 +23,12 @@ public class Button1Script : MonoBehaviour
             button1Text.text = "Button Activated";
             doorScript.Button1Activated();
 
+            audioManager.playSFX(audioManager.buttonPressed);
+
             StartCoroutine(HideButtonText(button1Text));
+
+
+
         }
     }
 

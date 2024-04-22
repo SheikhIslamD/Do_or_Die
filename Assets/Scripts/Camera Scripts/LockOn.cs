@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
@@ -11,7 +11,7 @@ public class LockOn : MonoBehaviour
     [SerializeField] private CinemachineFreeLook cinemachineFreeLook; //cinemachine free lock camera object.
 
     [Header("UI")]
-    [SerializeField] private Image aimIcon;  // ui image of aim icon 
+    [SerializeField] private Image lockOnIcon;  // ui image of aim icon 
 
     [Header("Settings")]
     [SerializeField] private string TargetTag; //Assign the target tag
@@ -45,8 +45,8 @@ public class LockOn : MonoBehaviour
             NewInputTarget(currentTarget);
         }
 
-        if (aimIcon)
-            aimIcon.gameObject.SetActive(isTargeting);
+        if (lockOnIcon)
+            lockOnIcon.gameObject.SetActive(isTargeting);
 
         cinemachineFreeLook.m_XAxis.m_InputAxisValue = mouseX;
         cinemachineFreeLook.m_YAxis.m_InputAxisValue = mouseY;
@@ -79,8 +79,8 @@ public class LockOn : MonoBehaviour
 
         Vector3 viewPos = mainCamera.WorldToViewportPoint(target.position);
 
-        if (aimIcon)
-            aimIcon.transform.position = mainCamera.WorldToScreenPoint(target.position);
+        if (lockOnIcon)
+            lockOnIcon.transform.position = mainCamera.WorldToScreenPoint(target.position);
 
         if ((target.position - transform.position).magnitude < minDistance) return;
         mouseX = (viewPos.x - 0.5f + targetLockOffset.x) * 3f;              // you can change the last value to make it faster or slower
@@ -121,3 +121,4 @@ public class LockOn : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, maxDistance);
     }
 }
+*/
