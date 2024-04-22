@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7765260988578853204}
   - component: {fileID: 6659808103518699249}
   - component: {fileID: 8901526732753799739}
-  - component: {fileID: -4442040349748180865}
+  - component: {fileID: 8852059895662464280}
   m_Layer: 0
   m_Name: Edge2
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-4442040349748180865
-MeshCollider:
+--- !u!136 &8852059895662464280
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1083108532252104561, guid: e3bf2fd3df962034fa363857c53c9aae, type: 3}
+  m_Radius: 0.13740826
+  m_Height: 0.8130661
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.00053955993, z: 0}
