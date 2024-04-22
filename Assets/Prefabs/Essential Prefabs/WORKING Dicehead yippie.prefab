@@ -1155,6 +1155,7 @@ GameObject:
   - component: {fileID: 3576058576495542621}
   - component: {fileID: 3576058576495542620}
   - component: {fileID: 4645542371954043479}
+  - component: {fileID: 6100340076588750058}
   m_Layer: 11
   m_Name: Dicehead Player
   m_TagString: Player
@@ -1287,6 +1288,20 @@ MonoBehaviour:
   lockOnIcon: {fileID: 0}
   maxDistance: 20
   isTargeting: 0
+--- !u!136 &6100340076588750058
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3576058576495542612}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3576058576957132574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2512,10 @@ PrefabInstance:
     - target: {fileID: 8771091787928289351, guid: 903a2a34744ca9348913d566f57e262e, type: 3}
       propertyPath: m_Name
       value: Player3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771091787928289351, guid: 903a2a34744ca9348913d566f57e262e, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -4161369568681901532, guid: 903a2a34744ca9348913d566f57e262e, type: 3}
