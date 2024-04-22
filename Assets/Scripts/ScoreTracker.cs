@@ -20,7 +20,7 @@ public class ScoreTracker : MonoBehaviour
     public void scoreUp()
     {
         scoreCount++;
-        if (scoreCount == 3)
+        if (scoreCount == 4)
         {
             pauseScript = GameObject.Find("UICanvas (working)").GetComponent<PauseScript>();
             pauseScript.Victory();

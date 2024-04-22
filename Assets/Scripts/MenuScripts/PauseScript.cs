@@ -22,7 +22,7 @@ public class PauseScript : MonoBehaviour
 
     GameObject player;
 	AudioManager audioManager;
-	ScoreTracker scoreTracker;
+	[SerializeField] ScoreTracker scoreTracker;
 
     [Header("Controls Stuff")]
     public GameObject[] hands;
@@ -42,10 +42,14 @@ public class PauseScript : MonoBehaviour
 		playerInput.Enable();
 		Resume();
 
-        scoreTracker = GameObject.Find("ScoreTracker").GetComponent<ScoreTracker>();
-		scoreDisplay = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
-		scoreDisplay.text = "Levels\r\n" + scoreTracker.scoreCount + " of 3";
-    }
+        scoreTracker = GameObject.Find("ScoreManager").GetComponent<ScoreTracker>();
+		scoreDisplay = GameObject.Find("Score Display").GetComponent<TextMeshProUGUI>();
+		scoreDisplay.text = "Levels\r\n" + scoreTracker.scoreCount + " of 4";
+
+		victoryPanel.SetActive(false);
+		pausePanel.SetActive(false);
+		controlsPanel.SetActive(false);
+	}
 
 	private void Update()
 	{

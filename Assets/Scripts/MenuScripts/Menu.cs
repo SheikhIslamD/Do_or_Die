@@ -97,7 +97,7 @@ public class Menu : MonoBehaviour
         //If hand over main menu, go to title
         if (hands[1].activeInHierarchy == true)
             Maze();        //If hand over main menu, go to title
-        if (hands[1].activeInHierarchy == true)
+        if (hands[2].activeInHierarchy == true)
         {
             back(levelSelect);
             pauseScript.Resume();
@@ -106,7 +106,7 @@ public class Menu : MonoBehaviour
         if (hands[2].activeInHierarchy == true)
             Platformer();
         //If hand over quit, quit game.
-        if (hands[2].activeInHierarchy == true)
+        if (hands[4].activeInHierarchy == true)
             Boss();
     }
 

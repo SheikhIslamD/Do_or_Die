@@ -19,6 +19,7 @@ public class Victory : MonoBehaviour
     {
         playerInput = new PlayerControls();
         playerInput.Enable();
+		creditsPanel.SetActive(false);
     }
 	
 	private void Update()
