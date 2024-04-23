@@ -14,7 +14,7 @@ public class PauseScript : MonoBehaviour
     public GameObject pausePanel;
 	public GameObject controlsPanel;
 	public GameObject victoryPanel;
-	public TextMeshProUGUI scoreDisplay;
+	//public TextMeshProUGUI scoreDisplay;
 
     [Header("Visible For Debug")]
     public bool GameIsPaused = false;
@@ -42,9 +42,9 @@ public class PauseScript : MonoBehaviour
 		playerInput.Enable();
 		Resume();
 
-        scoreTracker = GameObject.Find("ScoreManager").GetComponent<ScoreTracker>();
+        /* scoreTracker = GameObject.Find("ScoreManager").GetComponent<ScoreTracker>();
 		scoreDisplay = GameObject.Find("Score Display").GetComponent<TextMeshProUGUI>();
-		scoreDisplay.text = "Levels\r\n" + scoreTracker.scoreCount + " of 4";
+		scoreDisplay.text = "Levels\r\n" + scoreTracker.scoreCount + " of 4"; */
 
 		victoryPanel.SetActive(false);
 		pausePanel.SetActive(false);
