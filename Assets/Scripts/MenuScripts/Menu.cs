@@ -91,21 +91,22 @@ public class Menu : MonoBehaviour
     //Will select the option a hand is currently over
     private void Select()
     {
-        //If hand over replay, replay level
+        //If hand over back, resume hub and unpause
         if (hands[0].activeInHierarchy == true)
-            Tutorial();
-        //If hand over main menu, go to title
-        if (hands[1].activeInHierarchy == true)
-            Maze();        //If hand over main menu, go to title
-        if (hands[2].activeInHierarchy == true)
         {
             back(levelSelect);
             pauseScript.Resume();
         }
-        //If hand over quit, quit game.
+        //If hand over Tutorial, go to Tutorial
+        if (hands[1].activeInHierarchy == true)
+            Tutorial();
+        //If hand over Platformer, go to Platformer
         if (hands[2].activeInHierarchy == true)
             Platformer();
-        //If hand over quit, quit game.
+        //If hand over Maze, Maze
+        if (hands[3].activeInHierarchy == true)
+            Maze();
+        //If hand over Boss, Boss
         if (hands[4].activeInHierarchy == true)
             Boss();
     }
