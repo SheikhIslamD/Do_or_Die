@@ -79,10 +79,17 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 
+		//makin player face where camera is facing when ADS is active
+		Quaternion targetRotation = Quaternion.Euler(0, cam.eulerAngles.y, 0);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+	
+	private void FixedUpdate()
+	{
 		if (controller.isGrounded)
 		{
 			if (!playerInput.Player.Jump.triggered)
-				velocity = 0f;
+				velocity = -5f;
 			else
 			{
 				velocity = Mathf.Sqrt(jump * -2f * gravity);
@@ -92,15 +99,9 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 		
-		if (!controller.isGrounded && !playerInput.Player.Jump.triggered)
-			velocity += gravity * Time.deltaTime;
-		
+		velocity += gravity * Time.deltaTime;
 		controller.Move(new Vector3(0, velocity, 0) * Time.deltaTime);
-
-		//makin player face where camera is facing when ADS is active
-		Quaternion targetRotation = Quaternion.Euler(0, cam.eulerAngles.y, 0);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-    }
+	}
 
 	public void DamageHealth()
     {
