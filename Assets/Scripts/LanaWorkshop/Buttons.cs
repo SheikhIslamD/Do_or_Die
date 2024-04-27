@@ -35,6 +35,8 @@ public class Buttons : MonoBehaviour
                 CounterText.text = "Buttons Activated: " + doorScript2.pressed + "/3";
                 StartCoroutine(HideButtonText(button1Text));
                 Destroy(GetComponent<CapsuleCollider>());
+                Destroy(GetComponent<MeshRenderer>());
+                Destroy(GetComponent<BoxCollider>());
             }
             else if (gameObject.CompareTag("Button2"))
             {
@@ -46,6 +48,8 @@ public class Buttons : MonoBehaviour
                 CounterText.text = "Buttons Activated: " + doorScript2.pressed + "/3";
                 StartCoroutine(HideButtonText(button1Text));
                 Destroy(GetComponent<CapsuleCollider>());
+                Destroy(GetComponent<MeshRenderer>());
+                Destroy(GetComponent<BoxCollider>());
             }
             else if (gameObject.CompareTag("Button3"))
             {
@@ -57,6 +61,8 @@ public class Buttons : MonoBehaviour
                 CounterText.text = "Buttons Activated: " + doorScript2.pressed + "/3";
                 StartCoroutine(HideButtonText(button1Text));
                 Destroy(GetComponent<CapsuleCollider>());
+                Destroy(GetComponent<MeshRenderer>());
+                Destroy(GetComponent<BoxCollider>());
             }
             
 
