@@ -26,7 +26,7 @@ public class LockIn : MonoBehaviour
     [SerializeField] private KeyCode _Input; //Assign the lock on input
     [SerializeField] private Vector2 targetLockOffset; //Tilts the camera when locked on so the player can see themselves and the target
     [SerializeField] private float minDistance; // minimum distance to stop rotation if you get close to target */
-    [SerializeField] private float maxDistance = 50;
+    [SerializeField] private float maxDistance = 25;
 
     public bool isTargeting = false;
     private float maxAngle = 135f; // always 90 to target enemies in front of camera.
