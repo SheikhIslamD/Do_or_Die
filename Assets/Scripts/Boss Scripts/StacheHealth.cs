@@ -10,6 +10,7 @@ public class StacheHealth : MonoBehaviour
 	public TextMeshProUGUI healthCounter;
 	AudioManager audioManager;
     PauseScript pauseScript;
+	public bool isDead;
 
     void Awake()
 	{
@@ -25,11 +26,11 @@ public class StacheHealth : MonoBehaviour
 		
 		if (health <= 0)
 		{
-            pauseScript.GameOver();
+            //pauseScript.GameOver();
 
-            audioManager.playSFX(audioManager.win);
+			isDead = true;
 
-            Destroy(stache);
+            //audioManager.playSFX(audioManager.win);
         }
 	}
 }
