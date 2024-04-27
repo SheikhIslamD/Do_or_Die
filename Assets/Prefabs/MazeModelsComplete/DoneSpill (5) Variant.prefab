@@ -31,6 +31,10 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6317267561938792737, guid: 183a40827464246429c1e33dc176752d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6916145923015487154, guid: 183a40827464246429c1e33dc176752d, type: 3}
       propertyPath: playerMovement
       value: 
@@ -81,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916145923344904867, guid: 183a40827464246429c1e33dc176752d, type: 3}
       propertyPath: m_Name
-      value: DoneSpill (5)
+      value: DoneSpill (5) Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 183a40827464246429c1e33dc176752d, type: 3}
