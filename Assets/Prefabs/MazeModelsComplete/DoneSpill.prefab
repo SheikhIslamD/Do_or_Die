@@ -5065,20 +5065,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8771091787928289351, guid: cc8ba9756a180d34287d8ec8e4fb0031, type: 3}
   m_PrefabInstance: {fileID: 6916145921523389376}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &6916145922366077802
-MeshCollider:
+--- !u!65 &6150674564062562043
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2756831411647599495}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3354305893264628646, guid: cc8ba9756a180d34287d8ec8e4fb0031, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0.37590504, z: 2}
+  m_Center: {x: 0.0000038146973, y: -0.000030517578, z: -0.000030517578}
 --- !u!114 &4775403505203229954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5171,20 +5170,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8771091787928289351, guid: cc8ba9756a180d34287d8ec8e4fb0031, type: 3}
   m_PrefabInstance: {fileID: 6916145922293141687}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &6916145921958440812
-MeshCollider:
+--- !u!65 &3640575778976820447
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2756831412484264176}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3354305893264628646, guid: cc8ba9756a180d34287d8ec8e4fb0031, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.9999998, y: 0.37590507, z: 2.0000002}
+  m_Center: {x: 0.000030517578, y: 0, z: 0.000019073486}
 --- !u!114 &4775403505203229955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5390,7 +5388,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2756831413090323245}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.1366018, y: 1.6192878, z: 1.1366017}
