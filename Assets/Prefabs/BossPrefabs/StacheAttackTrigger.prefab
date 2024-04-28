@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7063818077170708669}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -3.11, y: 0.40000027, z: 0}
+  m_LocalRotation: {x: 0.70666087, y: -0.025108099, z: 0.025108099, w: 0.70666087}
+  m_LocalPosition: {x: -3.11, y: 0.40000027, z: 0.33}
   m_LocalScale: {x: 0.13002041, y: 0.34078303, z: 0.13002041}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5578306188855753815}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -7.996}
 --- !u!1 &8943478155895557994
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 8943478155895557994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30.76, y: 45.2, z: 13.82}
-  m_LocalScale: {x: 7.6911, y: 2.9344187, z: 4.1564817}
+  m_LocalScale: {x: 7.6911, y: 2.9344187, z: 3.777741}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3157784183568719056}
@@ -144,4 +144,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5095143352525218386, guid: a169250c81cc49444b22676d142a99e3, type: 3}
   shootPoint: {fileID: 3157784183568719056}
-  speed: 6
+  speed: 7
+  isCoinShooting: 0
+  isCardShooting: 0
