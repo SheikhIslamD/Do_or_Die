@@ -11,6 +11,9 @@ public class Menu : MonoBehaviour
     public GameObject levelSelect;
     PauseScript pauseScript;
 
+    public GameObject bossLockIcon;
+    public bool bossLocked = true;
+
     public bool stickMoved; //used to keep cursor slow
     public int i = 1; //keep track of hands with int
 
@@ -108,7 +111,16 @@ public class Menu : MonoBehaviour
             Maze();
         //If hand over Boss, Boss
         if (hands[4].activeInHierarchy == true)
+        {
             Boss();
+        }
+            
+    }
+
+    public void UnlockBoss()
+    {
+        bossLocked = false;
+        bossLockIcon.SetActive(false);
     }
 
     public void Platformer()
@@ -122,7 +134,10 @@ public class Menu : MonoBehaviour
     }
     public void Boss()
     {
-        SceneManager.LoadScene("BossPrototype");
+        if (!bossLocked)
+        { 
+            SceneManager.LoadScene("BossPrototype");
+        }
     }
     public void Tutorial()
     {

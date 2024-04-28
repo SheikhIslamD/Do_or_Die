@@ -13,8 +13,10 @@ public class PauseScript : MonoBehaviour
     public TextMeshProUGUI endText;
     public GameObject pausePanel;
 	public GameObject controlsPanel;
-	//public GameObject victoryPanel;
-	//public TextMeshProUGUI scoreDisplay;
+    public TextMeshProUGUI diceNameText;
+    public TextMeshProUGUI diceCollectedText;
+    //public GameObject victoryPanel;
+    //public TextMeshProUGUI scoreDisplay;
 
     [Header("Visible For Debug")]
     public bool GameIsPaused = false;
@@ -180,11 +182,14 @@ public class PauseScript : MonoBehaviour
 		{
 			//scoreTracker.scoreUp();
 			endText.text = "Level Complete!";
+			diceCollectedText.text = "Collected";
 		}
 		else
 		{
             endText.text = "Level Failed!";
-		}
+            diceCollectedText.text = " ";
+			diceNameText.text = " ";
+        }
         endPanel.SetActive(true);
     }
 
