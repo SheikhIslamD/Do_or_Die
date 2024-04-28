@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Numbers Stuff")]
     public int health;
 	public float speed = 7f;
-	float velocity;
+	public float velocity;
 	public float turnSmooth = 0.1f;
 	float turnVelocity;
 	public float jump = 2f;
@@ -89,18 +89,18 @@ public class PlayerMovement : MonoBehaviour
 		if (controller.isGrounded)
 		{
 			if (!playerInput.Player.Jump.triggered)
-				velocity = -5f;
+				velocity = -4f;
 			else
 			{
-				velocity = Mathf.Sqrt(jump * -2f * gravity);
+				velocity = Mathf.Sqrt(jump * -2.5f * gravity);
 				animator.SetBool("is_running", false);
 				animator.SetBool("is_idle", false);
 				animator.SetTrigger("jump");
 			}
 		}
 		
-		velocity += gravity * Time.deltaTime;
-		controller.Move(new Vector3(0, velocity, 0) * Time.deltaTime);
+		velocity += gravity * Time.fixedDeltaTime;
+		controller.Move(new Vector3(0, velocity, 0) * Time.fixedDeltaTime);
 	}
 
 	public void DamageHealth()
