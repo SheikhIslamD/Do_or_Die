@@ -41,13 +41,12 @@ public class Talking : MonoBehaviour
             {
                 CountReference.textCount++;
                 BoxCollider bc = GetComponent<BoxCollider>();
-                StartCoroutine(ActivateCanvasForDuration(Dialogue, 8f, bc));
+                StartCoroutine(ActivateCanvasForDuration(Dialogue, 8f));
                 // Check which yap session was triggered, so we can reuse this script
                 if (gameObject.CompareTag("MiddleCollider"))
                 {
-                    MiddleTriggerBoxCollider.size = new Vector3(35f, 1f, 1f);
+                    MiddleTriggerBoxCollider.size = new Vector3(0.01f, 0.01f, 0.01f);
                     StartCoroutine(ActivateCanvasForDuration(ContinuedText, 8f));
-                    MiddleTrigger.SetActive(false);
                 }
                 if (gameObject.CompareTag("Text"))
                 {
