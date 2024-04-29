@@ -10,6 +10,7 @@ public class StacheAttacks : MonoBehaviour
     AudioManager audioManager;
     public bool isCoinShooting; //for stache animation
     public bool isCardShooting; //also for stache animation
+    [SerializeField] ParticleSystem stachePoof; //poof effect
 
     //Whatever prefab you are using for the projectile must also have this script assigned. The spawn function doesn't need to be assigned
 
@@ -54,7 +55,7 @@ public class StacheAttacks : MonoBehaviour
         }
 		
         //place particle effect here
-        Destroy(gameObject, 5); 
+        Destroy(gameObject, 5);
     }
 
     //Projectile shot function
@@ -64,6 +65,9 @@ public class StacheAttacks : MonoBehaviour
 		
         //Instantiate a new projectile at the shootPoint position and rotation
         GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+        //instantiate poof effect
+/*        ParticleSystem poof = Instantiate(stachePoof, new Vector3(-56, -4, -9), Quaternion.identity);
+        Destroy(poof, 5);*/
 
         //Cards are slower than coins so check the speed and play the according sound when thrown
         if (speed > 8)

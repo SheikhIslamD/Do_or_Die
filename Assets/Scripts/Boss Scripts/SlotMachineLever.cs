@@ -7,6 +7,7 @@ public class SlotMachineLever : MonoBehaviour
     private Animation anim;
 	public GameObject coin; //spawn coins
 	public Transform dropPoint; //drop point above Stache's head
+    //[SerializeField] ParticleSystem stachePoof; //poof effect
 
     private void Start()
     {
@@ -26,6 +27,8 @@ public class SlotMachineLever : MonoBehaviour
 	void InstantiateCoin()
     {
 		GameObject dropper = Instantiate(coin, dropPoint.position, Quaternion.identity);
-		Rigidbody rb = dropper.GetComponent<Rigidbody>();
+/*        ParticleSystem poof = Instantiate(stachePoof, dropPoint.position, dropPoint.rotation);
+        Destroy(poof, 5);*/
+        Rigidbody rb = dropper.GetComponent<Rigidbody>();
     }
 }

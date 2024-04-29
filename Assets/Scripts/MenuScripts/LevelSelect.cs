@@ -17,7 +17,7 @@ public class LevelSelect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             pauseScript.Pause();
             pauseScript.pausePanel.SetActive(false);

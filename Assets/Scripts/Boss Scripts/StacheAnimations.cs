@@ -12,14 +12,9 @@ public class StacheAnimations : MonoBehaviour
 
     public GameObject player;
     public GameObject cutsceneCam;
-<<<<<<< Updated upstream
-
-=======
     
     public GameObject soulDice;
     public ParticleSystem soulDicePoof;
-    public ParticleSystem magicPoofHead;
->>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
@@ -43,19 +38,13 @@ public class StacheAnimations : MonoBehaviour
     IEnumerator FinishCut()
     {
         yield return new WaitForSeconds(3);
-        magicPoofHead.Play();
-        soulDice.SetActive(true);
-        Instantiate(soulDicePoof, new Vector3(0, 35, -8), Quaternion.identity);
-        yield return new WaitForSeconds(3);
         player.SetActive(true);
         cutsceneCam.SetActive(false);
         Destroy(this);
-<<<<<<< Updated upstream
-=======
 
+        soulDice.SetActive(true);
+        Instantiate(soulDicePoof, new Vector3(0, 35, -8), Quaternion.identity);
 
-
->>>>>>> Stashed changes
         Debug.Log("Couroutine ran");
         Debug.Log("cutsceneCam active: " + cutsceneCam.activeSelf);
     }
