@@ -8,26 +8,34 @@ public class HubCutscene : MonoBehaviour
     [SerializeField] ScoreTracker scoreTracker;
     [SerializeField] GameObject timeLine;
 
+    public bool cutScenePlayed;
+
     // Start is called before the first frame update
     void Start()
     {
-        scoreTracker = GameObject.Find("ScoreTracker").GetComponent<ScoreTracker>();
-        /*scoreTracker = GetComponent<ScoreTracker>();
-        if (scoreTracker.soulDice | scoreTracker.mindDice)
+        /*if (scoreTracker.soulDice | scoreTracker.mindDice)
         {
             cutsceneCam.SetActive(false);
         }*/
-        if (!scoreTracker.cutScenePlayed)
+        if (!cutScenePlayed)
         {
             cutsceneCam.SetActive(true);
             Destroy(cutsceneCam, 15);
+            cutScenePlayed = true;           
         }
         else
         {
-            Destroy(timeLine);
-            Destroy(this.gameObject);
+            selfDestruct();
         }
-
     }
 
+
+    public void selfDestruct()
+    {
+        Destroy(cutsceneCam);
+        Destroy(timeLine);
+        Destroy(this.gameObject);
+        Debug.Log("Self destruct");
+
+    }
 }

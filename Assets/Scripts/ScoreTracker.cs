@@ -18,10 +18,14 @@ public class ScoreTracker : MonoBehaviour
     public bool mindDice = false;
     public bool soulDice = false;
 
-    public bool cutScenePlayed = false;
+    //public bool cutScenePlayed = false;
 
     [Header("UI Related")]
     [SerializeField] PauseScript pauseScript;
+
+    [Header("Hub cutscene")]
+    [SerializeField] HubCutscene hubCutscene;
+    public bool openingDone;
     //[SerializeField] TextMeshProUGUI diceNameText;
 
     //[SerializeField] GameObject prefabUI;
@@ -42,7 +46,7 @@ public class ScoreTracker : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        cutScenePlayed = false;
+        //cutScenePlayed = false;
         //SceneManager.activeSceneChanged += ChangedActiveScene;
         SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -56,14 +60,25 @@ public class ScoreTracker : MonoBehaviour
         if (scene.name == "Hub")
         {
             menuScript = GameObject.Find("UICanvas (working)").GetComponent<Menu>();
-            
+
             if (bodyDice && mindDice)
             {
                 menuScript.UnlockBoss();
             }
 
-            cutScenePlayed = true;
+            //cutScenePlayed = true;
+            hubCutscene = GameObject.Find("Opening Cutscene Anchor").GetComponent<HubCutscene>(); Debug.Log("Found hubCutscene");
+            
+            if (hubCutscene.cutScenePlayed)
+            {
+                openingDone = true;
+            }
 
+            if (openingDone)
+            {
+                hubCutscene.selfDestruct();
+                Debug.Log("Self destructing");
+            }
         }
     }
 

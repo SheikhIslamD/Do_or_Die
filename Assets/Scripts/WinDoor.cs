@@ -21,9 +21,7 @@ public class WinDoor : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
-            
-
+        {          
             audioManager.playSFX(audioManager.win);
 
             scoreTracker.DiceCollected();
