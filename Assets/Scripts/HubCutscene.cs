@@ -15,7 +15,7 @@ public class HubCutscene : MonoBehaviour
         {
             cutsceneCam.SetActive(false);
         }*/
-
+        cutsceneCam.SetActive(true);
         Destroy(cutsceneCam, 15);
     }
 

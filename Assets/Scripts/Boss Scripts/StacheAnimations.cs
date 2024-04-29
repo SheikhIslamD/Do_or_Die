@@ -37,13 +37,14 @@ public class StacheAnimations : MonoBehaviour
 
     IEnumerator FinishCut()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
+        soulDicePoof.Play();
+        soulDice.SetActive(true);
+        Instantiate(soulDicePoof, new Vector3(0, 35, -8), Quaternion.identity);
+        yield return new WaitForSeconds(2);
         player.SetActive(true);
         cutsceneCam.SetActive(false);
         Destroy(this);
-
-        soulDice.SetActive(true);
-        Instantiate(soulDicePoof, new Vector3(0, 35, -8), Quaternion.identity);
 
         Debug.Log("Couroutine ran");
         Debug.Log("cutsceneCam active: " + cutsceneCam.activeSelf);

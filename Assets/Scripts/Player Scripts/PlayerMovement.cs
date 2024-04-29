@@ -96,31 +96,8 @@ public class PlayerMovement : MonoBehaviour
 
 		//makin player face where camera is facing when ADS is active
 		Quaternion targetRotation = Quaternion.Euler(0, cam.eulerAngles.y, 0);
-<<<<<<< Updated upstream
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
-	
-	private void FixedUpdate()
-	{
-		if (controller.isGrounded)
-		{
-			if (!playerInput.Player.Jump.triggered)
-				velocity = -5f;
-			else
-			{
-				velocity = Mathf.Sqrt(jump * -2f * gravity);
-				animator.SetBool("is_running", false);
-				animator.SetBool("is_idle", false);
-				animator.SetTrigger("jump");
-			}
-		}
-		
-		velocity += gravity * Time.deltaTime;
-		controller.Move(new Vector3(0, velocity, 0) * Time.deltaTime);
-=======
-		transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
->>>>>>> Stashed changes
-	}
 
 	public void DamageHealth()
     {
