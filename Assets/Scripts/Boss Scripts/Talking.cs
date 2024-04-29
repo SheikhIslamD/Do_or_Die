@@ -12,14 +12,17 @@ public class Talking : MonoBehaviour
     public GameObject ExplanationText;
     public GameObject ContinuedText; 
     public GameObject FinalText;
-
+    public GameObject DeathText;
     [Header("Assign Triggers")]
     public GameObject FirstTriggerRight;
     public GameObject SecondTriggerRight;
     public GameObject FirstTriggerLeft;
     public GameObject SecondTriggerLeft;
+    public GameObject MiddleTrigger;
+
     [Header("I can't believe it's come to this")]
     public Count CountReference;
+    public BoxCollider MiddleTriggerBoxCollider;
 
 
     // Start is called before the first frame update
@@ -36,20 +39,26 @@ public class Talking : MonoBehaviour
          {
             if (other.CompareTag("Player"))
             {
+                CountReference.textCount++;
+                BoxCollider bc = GetComponent<BoxCollider>();
+                StartCoroutine(ActivateCanvasForDuration(Dialogue, 8f, bc));
                 // Check which yap session was triggered, so we can reuse this script
+                if (gameObject.CompareTag("MiddleCollider"))
+                {
+                    MiddleTriggerBoxCollider.size = new Vector3(35f, 1f, 1f);
+                    StartCoroutine(ActivateCanvasForDuration(ContinuedText, 8f));
+                    MiddleTrigger.SetActive(false);
+                }
                 if (gameObject.CompareTag("Text"))
                 {
-                    Debug.Log("Starting if");
-                    BoxCollider bc = GetComponent<BoxCollider>();
-                    StartCoroutine(ActivateCanvasForDuration(Dialogue, 8f, bc));
-                    CountReference.textCount++;
-                    Debug.Log(CountReference.textCount);
                     if (CountReference.textCount == 1)
                         StartCoroutine(ActivateCanvasForDuration(ExplanationText, 8f, bc));
                     if (CountReference.textCount == 2)
                         StartCoroutine(ActivateCanvasForDuration(ContinuedText, 8f, bc));
                     if (CountReference.textCount == 3)
                         StartCoroutine(ActivateCanvasForDuration(FinalText, 8f, bc));
+                    if (CountReference.textCount == 4)
+                        StartCoroutine(ActivateCanvasForDuration(DeathText, 8f, bc));
                 }
             }
         }
@@ -85,8 +94,9 @@ public class Talking : MonoBehaviour
         
     }
 
-    private void SpawnTalk()
+    public void SpawnTalk()
     {
-
+        Debug.Log("Spawn talked");
+        MiddleTriggerBoxCollider.size = new Vector3(35f, 30f, 1f);
     }
 }
