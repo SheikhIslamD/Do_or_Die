@@ -111,7 +111,10 @@ public class ScoreTracker : MonoBehaviour
             //diceNameText.color = soulColor;
         }
 
-
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            pauseScript.diceNameText.text = "No Dice";
+        }
     }
 
 
