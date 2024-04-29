@@ -84,4 +84,9 @@ public class Talking : MonoBehaviour
         Debug.Log("Destroyed and ending co");
         
     }
+
+    private void SpawnTalk()
+    {
+
+    }
 }
