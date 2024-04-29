@@ -23,6 +23,7 @@ public class Yapanese : MonoBehaviour
                 CardText.SetActive(false);
                 JumpText.SetActive(false);
                 Tutorial.SetActive(false);
+                Destroy(gameObject);
             }
             else if (gameObject.CompareTag("HowToJump"))
             {
@@ -30,6 +31,7 @@ public class Yapanese : MonoBehaviour
                 WallText.SetActive(false);
                 CardText.SetActive(false);
                 JumpText.SetActive(true);
+                Destroy(gameObject);
             }
             else if (gameObject.CompareTag("HowToCard"))
             {
@@ -37,7 +39,7 @@ public class Yapanese : MonoBehaviour
                 CardText.SetActive(true);
                 WallText.SetActive(false);
                 Tutorial.SetActive(true);
-                
+                Destroy(gameObject);
             }
             else if (gameObject.CompareTag("HowToWall"))
             {
@@ -45,6 +47,7 @@ public class Yapanese : MonoBehaviour
                 CardText.SetActive(false);
                 WallText.SetActive(true);
                 Tutorial.SetActive(true);
+                Destroy(gameObject);
             }
         }
     }
