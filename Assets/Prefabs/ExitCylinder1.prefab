@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 1640160982175460325}
   - component: {fileID: 5913355464997665331}
   - component: {fileID: 6697012452305507638}
-  - component: {fileID: 5061961474007138731}
-  - component: {fileID: 1640160982175460324}
+  - component: {fileID: 6928442651928042098}
   m_Layer: 0
   m_Name: ExitCylinder1
   m_TagString: Untagged
@@ -27,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8415266160627197816}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.5544224, y: -1.6499999, z: 93.36159}
-  m_LocalScale: {x: 17.2219, y: 0.47195774, z: 17.2219}
+  m_LocalScale: {x: 18.343094, y: 0.50268346, z: 18.343094}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0a4d63659ebbc4a4f9171f3c290dceaf, type: 2}
+  - {fileID: 2100000, guid: 7047a0419b9929a46bea230db1aa74a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,34 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5061961474007138731
-CapsuleCollider:
+--- !u!65 &6928442651928042098
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8415266160627197816}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &1640160982175460324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8415266160627197816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ec055cb6687e9e40b82e40e8f5fc097, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WinUI: {fileID: 0}
-  UIHud: {fileID: 0}
-  mouseLookEnabled: 0
-  GameIsPaused: 0
-  levelButtons: []
+  serializedVersion: 2
+  m_Size: {x: 1.0000006, y: 1.9999999, z: 1.0000007}
+  m_Center: {x: 0.00000017881396, y: 0.00000035762787, z: -0.00000008940701}
