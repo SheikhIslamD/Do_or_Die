@@ -225,10 +225,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 311574461441081676}
+    - target: {fileID: 6201266228382989386, guid: b061a4b17bd5ec94ba3cd6ae17038986, type: 3}
+      propertyPath: m_text
+      value: Hub
+      objectReference: {fileID: 0}
     - target: {fileID: 6201266228382989389, guid: b061a4b17bd5ec94ba3cd6ae17038986, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 311574461441081676}
+    - target: {fileID: 6201266228382989389, guid: b061a4b17bd5ec94ba3cd6ae17038986, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: hubLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201266228382989391, guid: b061a4b17bd5ec94ba3cd6ae17038986, type: 3}
+      propertyPath: m_Name
+      value: Hub Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201266228577341917, guid: b061a4b17bd5ec94ba3cd6ae17038986, type: 3}
+      propertyPath: m_Name
+      value: hub
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b061a4b17bd5ec94ba3cd6ae17038986, type: 3}
 --- !u!224 &3592751534334721581 stripped

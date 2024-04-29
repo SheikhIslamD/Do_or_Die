@@ -12,7 +12,9 @@ public class StacheAnimations : MonoBehaviour
 
     public GameObject player;
     public GameObject cutsceneCam;
-
+    
+    public GameObject soulDice;
+    public ParticleSystem soulDicePoof;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,10 @@ public class StacheAnimations : MonoBehaviour
         player.SetActive(true);
         cutsceneCam.SetActive(false);
         Destroy(this);
+
+        soulDice.SetActive(true);
+        Instantiate(soulDicePoof, new Vector3(0, 35, -8), Quaternion.identity);
+
         Debug.Log("Couroutine ran");
         Debug.Log("cutsceneCam active: " + cutsceneCam.activeSelf);
     }

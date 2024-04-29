@@ -105,6 +105,7 @@ public class ScoreTracker : MonoBehaviour
         {
             Color ALLColor = new Vector4(255, 125, 255, 255);
             pauseScript.Victory();
+            pauseScript.endText.text = "VICTORY!!";
             pauseScript.diceNameText.text = "ALL Dice";
             pauseScript.diceNameText.color = ALLColor;
             //diceNameText.color = soulColor;

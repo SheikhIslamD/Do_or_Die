@@ -1216,6 +1216,7 @@ MonoBehaviour:
   diceProjectile: {fileID: 4414934223948222586}
   health: 3
   speed: 7
+  velocity: 0
   turnSmooth: 0.1
   jump: 2
   gravity: -9.81
@@ -1723,7 +1724,7 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 15.945382
     m_SpeedMode: 1
-    m_MaxSpeed: 0.25
+    m_MaxSpeed: 0.15
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -1747,7 +1748,7 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 0.25
+    m_MaxSpeed: 0.15
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
