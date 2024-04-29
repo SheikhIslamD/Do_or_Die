@@ -18,6 +18,8 @@ public class ScoreTracker : MonoBehaviour
     public bool mindDice = false;
     public bool soulDice = false;
 
+    public bool cutScenePlayed = false;
+
     [Header("UI Related")]
     [SerializeField] PauseScript pauseScript;
     //[SerializeField] TextMeshProUGUI diceNameText;
@@ -40,6 +42,7 @@ public class ScoreTracker : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        cutScenePlayed = false;
         //SceneManager.activeSceneChanged += ChangedActiveScene;
         SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -58,6 +61,8 @@ public class ScoreTracker : MonoBehaviour
             {
                 menuScript.UnlockBoss();
             }
+
+            cutScenePlayed = true;
 
         }
     }
