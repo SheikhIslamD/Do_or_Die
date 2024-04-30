@@ -3,40 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StacheAnimations : MonoBehaviour
-{
+{   
     Animator animator;
-    StacheAttacks stacheAttacks;
-    StacheHealth stacheHealth;
+    public StacheAttacks stacheAttacks;
+    public StacheHealth stacheHealth;
+    public GameObject attacks;
+    public GameObject timeline;
+
+    public GameObject player;
+    public GameObject cutsceneCam;
+    
+    public GameObject soulDice;
+    public ParticleSystem soulDicePoof;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
-        stacheAttacks = GetComponent<StacheAttacks>();
-        stacheHealth = GetComponent<StacheHealth>();
+        animator = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
-        if (stacheAttacks.isCoinShooting == true)
+        if (stacheHealth.health == 0)
         {
-            Debug.Log("Stache is animating");
-            animator.SetBool("coinShot", true);
+            animator.SetInteger("health", 0);
+            Destroy(attacks);
+            cutsceneCam.SetActive(true);
+            player.SetActive(false);
+            StartCoroutine(FinishCut());
         }
-        else
-        {
-            animator.SetBool("coinShot", false);
-        }
+    }
 
-        if (stacheAttacks.isCardShooting == true)
-        {
-            Debug.Log("Stache is animating");
-            animator.SetBool("cardShot", true);
-        }
-        else
-        {
-            animator.SetBool("cardShot", false);
-        }
+    IEnumerator FinishCut()
+    {
+        yield return new WaitForSeconds(4);
+        soulDicePoof.Play();
+        soulDice.SetActive(true);
+        Instantiate(soulDicePoof, new Vector3(0, 35, -8), Quaternion.identity);
+        yield return new WaitForSeconds(2);
+        player.SetActive(true);
+        cutsceneCam.SetActive(false);
+        Destroy(this);
+
+        Debug.Log("Couroutine ran");
+        Debug.Log("cutsceneCam active: " + cutsceneCam.activeSelf);
     }
 }

@@ -27,12 +27,12 @@ public class Buttons : MonoBehaviour
         {
             if (gameObject.CompareTag("Button1"))
             {
-                button1Text.text = "Button Activated";
+                button1Text.text = "Card Collected";
                 doorScript2.pressed++;
                 //Debug.Log(pressed);
                 doorScript.Button1Activated();
                 audioManager.playSFX(audioManager.buttonPressed);
-                CounterText.text = "Buttons Activated: " + doorScript2.pressed + "/3";
+                CounterText.text = "Cards Collected: " + doorScript2.pressed + "/3";
                 StartCoroutine(HideButtonText(button1Text));
                 Destroy(GetComponent<CapsuleCollider>());
                 Destroy(GetComponent<MeshRenderer>());
@@ -40,12 +40,12 @@ public class Buttons : MonoBehaviour
             }
             else if (gameObject.CompareTag("Button2"))
             {
-                button1Text.text = "Button Activated";
+                button1Text.text = "Card Collected";
                 doorScript2.pressed++;
                 //Debug.Log(doorScript2.pressed);
                 doorScript.Button2Activated();
                 audioManager.playSFX(audioManager.buttonPressed);
-                CounterText.text = "Buttons Activated: " + doorScript2.pressed + "/3";
+                CounterText.text = "Cards Collected: " + doorScript2.pressed + "/3";
                 StartCoroutine(HideButtonText(button1Text));
                 Destroy(GetComponent<CapsuleCollider>());
                 Destroy(GetComponent<MeshRenderer>());
@@ -53,12 +53,12 @@ public class Buttons : MonoBehaviour
             }
             else if (gameObject.CompareTag("Button3"))
             {
-                button1Text.text = "Button Activated";
+                button1Text.text = "Card Collected";
                 doorScript2.pressed++;
                 //Debug.Log(pressed);
                 doorScript2.NewButton1Activated();
                 audioManager.playSFX(audioManager.buttonPressed);
-                CounterText.text = "Buttons Activated: " + doorScript2.pressed + "/3";
+                CounterText.text = "Cards Collected: " + doorScript2.pressed + "/3";
                 StartCoroutine(HideButtonText(button1Text));
                 Destroy(GetComponent<CapsuleCollider>());
                 Destroy(GetComponent<MeshRenderer>());

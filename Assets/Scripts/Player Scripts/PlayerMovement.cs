@@ -32,20 +32,32 @@ public class PlayerMovement : MonoBehaviour
     public Sprite[] healthHearts;
 	public Image healthHud;
 
-    private void Awake()
-    {
+	private void Awake()
+	{
 		health = 6;
 		healthHud = healthHud.GetComponent<Image>();
 		healthHud.sprite = healthHearts[health];
 		audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        pauseScript = GameObject.Find("UICanvas (working)").GetComponent<PauseScript>();
-		
-        playerInput = new PlayerControls();
+		pauseScript = GameObject.Find("UICanvas (working)").GetComponent<PauseScript>();
+
+		playerInput = new PlayerControls();
 		playerInput.Enable();
+		playerInput.Player.Jump.performed += ctx => Jump();
 	}
 
-    // Update is called once per frame
-    void Update()
+	private void Jump()
+	{
+		if (controller.isGrounded)
+		{
+			velocity = Mathf.Sqrt(jump * -2f * gravity);
+			animator.SetBool("is_running", false);
+			animator.SetBool("is_idle", false);
+			animator.SetTrigger("jump");
+		}
+	}
+
+	// Update is called once per frame
+	void Update()
 	{
 		Vector2 moveInput = playerInput.Player.Move.ReadValue<Vector2>();
 		Vector3 direction = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
@@ -79,29 +91,13 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 
+		velocity += gravity * Time.deltaTime;
+		controller.Move(new Vector3(0, velocity, 0) * Time.deltaTime);
+
 		//makin player face where camera is facing when ADS is active
 		Quaternion targetRotation = Quaternion.Euler(0, cam.eulerAngles.y, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
-	
-	private void FixedUpdate()
-	{
-		if (controller.isGrounded)
-		{
-			if (!playerInput.Player.Jump.triggered)
-				velocity = -5f;
-			else
-			{
-				velocity = Mathf.Sqrt(jump * -2f * gravity);
-				animator.SetBool("is_running", false);
-				animator.SetBool("is_idle", false);
-				animator.SetTrigger("jump");
-			}
-		}
-		
-		velocity += gravity * Time.deltaTime;
-		controller.Move(new Vector3(0, velocity, 0) * Time.deltaTime);
-	}
 
 	public void DamageHealth()
     {

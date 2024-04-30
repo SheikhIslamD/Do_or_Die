@@ -7,7 +7,10 @@ public class SlotMachineLever : MonoBehaviour
     private Animation anim;
 	public GameObject coin; //spawn coins
 	public Transform dropPoint; //drop point above Stache's head
-
+    //[SerializeField] ParticleSystem stachePoof; //poof effect
+    //[HideInInspector]
+    public Talking talkingRef;
+    public bool calledBefore = false;
     private void Start()
     {
         anim = gameObject.GetComponent<Animation>();
@@ -22,10 +25,21 @@ public class SlotMachineLever : MonoBehaviour
             Destroy(this);
         }
     }
-	
-	void InstantiateCoin()
+
+    void InstantiateCoin()
     {
 		GameObject dropper = Instantiate(coin, dropPoint.position, Quaternion.identity);
-		Rigidbody rb = dropper.GetComponent<Rigidbody>();
+/*        ParticleSystem poof = Instantiate(stachePoof, dropPoint.position, dropPoint.rotation);
+        Destroy(poof, 5);*/
+        Rigidbody rb = dropper.GetComponent<Rigidbody>();
+        if(!calledBefore)
+        {
+            GameObject DialogueManager = GameObject.Find("Dialogue Manager");
+            Talking talkingRef = DialogueManager.GetComponent<Talking>();
+            talkingRef.SpawnTalk();
+        }
+        calledBefore = true;
     }
 }
+
+
