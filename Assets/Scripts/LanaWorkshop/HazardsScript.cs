@@ -7,7 +7,7 @@ public class HazardsScript : MonoBehaviour
    public PlayerMovement playerMovement;
 
 
-void OnTriggerEnter(Collider other)
+public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
             {

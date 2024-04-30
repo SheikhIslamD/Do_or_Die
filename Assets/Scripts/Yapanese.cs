@@ -10,7 +10,7 @@ public class Yapanese : MonoBehaviour
     public GameObject JumpText;
     public GameObject CardText;
     public GameObject WallText;
-    public GameObject AwakeText;
+    [SerializeField] public GameObject AwakeText;
 
     public void Start()
     {
@@ -29,7 +29,7 @@ public class Yapanese : MonoBehaviour
                 CardText.SetActive(false);
                 JumpText.SetActive(false);
                 Tutorial.SetActive(false);
-                Destroy(gameObject);
+                gameObject.GetComponent<BoxCollider>().enabled = false;
             }
             else if (gameObject.CompareTag("HowToJump"))
             {
@@ -38,7 +38,8 @@ public class Yapanese : MonoBehaviour
                 CardText.SetActive(false);
                 JumpText.SetActive(true);
                 AwakeText.SetActive(false);
-                Destroy(gameObject);
+                StartCoroutine(EndDialogue());
+                gameObject.GetComponent<BoxCollider>().enabled = false;
             }
             else if (gameObject.CompareTag("HowToCard"))
             {
@@ -46,7 +47,9 @@ public class Yapanese : MonoBehaviour
                 CardText.SetActive(true);
                 WallText.SetActive(false);
                 Tutorial.SetActive(true);
-                Destroy(gameObject);
+                StartCoroutine(EndDialogue());
+                //Destroy(gameObject);
+                gameObject.GetComponent<BoxCollider>().enabled = false;
             }
             else if (gameObject.CompareTag("HowToWall"))
             {
@@ -54,8 +57,21 @@ public class Yapanese : MonoBehaviour
                 CardText.SetActive(false);
                 WallText.SetActive(true);
                 Tutorial.SetActive(true);
-                Destroy(gameObject);
+                StartCoroutine(EndDialogue());
+                //Destroy(gameObject);
+                gameObject.GetComponent<BoxCollider>().enabled = false;
             }
         }
+    }
+
+    IEnumerator EndDialogue()
+    {
+        yield return new WaitForSeconds(4);
+        WallText.SetActive(false);
+        CardText.SetActive(false);
+        JumpText.SetActive(false);
+        Tutorial.SetActive(false);
+        AwakeText.SetActive(false);
+        Debug.Log("Couroutine worked holy shit");
     }
 }

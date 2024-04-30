@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -104,12 +105,21 @@ public class PlayerMovement : MonoBehaviour
 		health--;
 		if (health <= 0)
 		{
-            diceProjectile.SetActive(false);
-			pauseScript.GameOver();
-            audioManager.playSFX(audioManager.lose);
+            if (SceneManager.GetActiveScene().name == "MazePrototype")
+			{
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
 
-			speed = 0f;
-			jump = 0f;
+			if (SceneManager.GetActiveScene().name != "MazePrototype")
+			{
+				diceProjectile.SetActive(false);
+				pauseScript.GameOver();
+				audioManager.playSFX(audioManager.lose);
+
+				speed = 0f;
+				jump = 0f;
+			}
+
         }
         else
         {

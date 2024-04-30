@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000017117396, g: 0.000000026237295, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.000017117347, g: 0.000000026237295, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3877,31 +3877,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2135179219519027457, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.067918785
+      value: -0.067406185
       objectReference: {fileID: 0}
     - target: {fileID: 2135179219519027457, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.408524
+      value: 8.408493
       objectReference: {fileID: 0}
     - target: {fileID: 2135179219519027457, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.16111395
+      value: -0.16141912
       objectReference: {fileID: 0}
     - target: {fileID: 2135179219519027457, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.14169712
+      value: 0.14046006
       objectReference: {fileID: 0}
     - target: {fileID: 2135179219519027457, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.13863547
+      value: 0.13742648
       objectReference: {fileID: 0}
     - target: {fileID: 2135179219519027457, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70060116
+      value: -0.7008469
       objectReference: {fileID: 0}
     - target: {fileID: 2135179219519027457, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.6854635
+      value: 0.68571025
       objectReference: {fileID: 0}
     - target: {fileID: 2387627380873440098, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: rollText
@@ -3993,7 +3993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576409150460, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6773005
+      value: 1.5387287
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576409150460, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4001,7 +4001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576409150460, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.000011
+      value: -3.0000112
       objectReference: {fileID: 0}
     - target: {fileID: 3576058576409150460, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4312,8 +4312,16 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3576058577803588828, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
+      propertyPath: m_VerticalAxis.m_MaxSpeed
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576058577803588828, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_VerticalAxis.m_SpeedMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576058577803588828, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
+      propertyPath: m_HorizontalAxis.m_MaxSpeed
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3576058577803588828, guid: 67e26faa8fa5f84478b14179e5f2baa5, type: 3}
       propertyPath: m_HorizontalAxis.m_SpeedMode
@@ -4948,6 +4956,7 @@ MonoBehaviour:
   JumpText: {fileID: 635141978}
   CardText: {fileID: 1066286272}
   WallText: {fileID: 1877582024}
+  AwakeText: {fileID: 1115905618}
 --- !u!1001 &276899184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12063,7 +12072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &680816983
 Transform:
   m_ObjectHideFlags: 0
@@ -12072,7 +12081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680816982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -400, y: -153.8, z: 0}
+  m_LocalPosition: {x: -400, y: -215, z: 0}
   m_LocalScale: {x: 0.6683375, y: 0.6683375, z: 0.6683375}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12911,6 +12920,7 @@ MonoBehaviour:
   JumpText: {fileID: 635141978}
   CardText: {fileID: 1066286272}
   WallText: {fileID: 1877582024}
+  AwakeText: {fileID: 1115905618}
 --- !u!1 &742939055
 GameObject:
   m_ObjectHideFlags: 0
@@ -16288,6 +16298,7 @@ MonoBehaviour:
   JumpText: {fileID: 635141978}
   CardText: {fileID: 1066286272}
   WallText: {fileID: 1877582024}
+  AwakeText: {fileID: 1115905618}
 --- !u!1001 &941599081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17738,6 +17749,7 @@ MonoBehaviour:
   JumpText: {fileID: 635141978}
   CardText: {fileID: 1066286272}
   WallText: {fileID: 1877582024}
+  AwakeText: {fileID: 1115905618}
 --- !u!1001 &1047524164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26291,6 +26303,7 @@ MonoBehaviour:
   JumpText: {fileID: 635141978}
   CardText: {fileID: 1066286272}
   WallText: {fileID: 1877582024}
+  AwakeText: {fileID: 1115905618}
 --- !u!1 &1506549366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5573024390672399181, guid: c480887217babea45b343655ccc8a450, type: 3}
@@ -36414,6 +36427,7 @@ MonoBehaviour:
   JumpText: {fileID: 635141978}
   CardText: {fileID: 1066286272}
   WallText: {fileID: 1877582024}
+  AwakeText: {fileID: 1115905618}
 --- !u!4 &2038334441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4007781905784835454, guid: e191d89365d4a4e40a342c6035f2353f, type: 3}

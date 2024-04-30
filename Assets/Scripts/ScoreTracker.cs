@@ -12,6 +12,8 @@ public class ScoreTracker : MonoBehaviour
     
     [Header("Hub only")]
     [SerializeField] Menu menuScript;
+    [SerializeField] GameObject mindDicePrefab;
+    public bool mazeCompleted = false;
 
     [Header("Dice Collected")]
     public bool bodyDice = false;
@@ -79,6 +81,11 @@ public class ScoreTracker : MonoBehaviour
                 hubCutscene.selfDestruct();
                 Debug.Log("Self destructing");
             }
+
+            if (mazeCompleted && !mindDice)
+            {
+                Object.Instantiate(mindDicePrefab, new Vector3(0, -8, -32), Quaternion.identity);
+            }
         }
     }
 
@@ -94,40 +101,40 @@ public class ScoreTracker : MonoBehaviour
         //check if the level is platformer
         if (SceneManager.GetActiveScene().name == "PlatformerPrototype")
         {
-            Color bodyColor = new Vector4(255, 127, 161, 255);
+            //Color bodyColor = new Vector4(255, 127, 161, 255);
             bodyDice = true;
             pauseScript.diceNameText.text = "Body Dice";
-            pauseScript.diceNameText.color = bodyColor;
+            //pauseScript.diceNameText.color = bodyColor;
             //red glow
         }
 
-        //check if the level is maze
-        if (SceneManager.GetActiveScene().name == "MazePrototype")
+        //check if the level is HUB instead of maze cause that broke
+        if (SceneManager.GetActiveScene().name == "Hub")
         {
-            Color mindColor = new Vector4(127, 161, 255, 255);
+            //Color mindColor = new Vector4(127, 161, 255, 255);
             mindDice = true;
             pauseScript.diceNameText.text = "Mind Dice";
-            pauseScript.diceNameText.color = mindColor;
+            //pauseScript.diceNameText.color = mindColor;
             //blue glow
         }
 
         //check if the level is boss
         if (SceneManager.GetActiveScene().name == "BossPrototype")
         {
-            Color soulColor = new Vector4(127, 255, 161, 255);
+            //Color soulColor = new Vector4(127, 255, 161, 255);
             soulDice = true;
             pauseScript.diceNameText.text = "Soul Dice";
-            pauseScript.diceNameText.color = soulColor;
+            //pauseScript.diceNameText.color = soulColor;
             //green glow
         }
 
         if (bodyDice && mindDice && soulDice)
         {
-            Color ALLColor = new Vector4(255, 125, 255, 255);
+            //Color ALLColor = new Vector4(255, 125, 255, 255);
             pauseScript.Victory();
             pauseScript.endText.text = "VICTORY!!";
             pauseScript.diceNameText.text = "ALL Dice";
-            pauseScript.diceNameText.color = ALLColor;
+            //pauseScript.diceNameText.color = ALLColor;
             //diceNameText.color = soulColor;
         }
 
